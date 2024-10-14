@@ -1,5 +1,5 @@
-import Image from "next/image";
+import styles from "./mainpage.module.css";
 
 export default function Home() {
-  return <p>hi</p>;
+  return <div className={styles.dummy}>dummy main body :) </div>;
 }
