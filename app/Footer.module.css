@@ -1,0 +1,42 @@
+.footerContainer {
+  height: 150px;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerInfo {
+  font-size: 14px;
+}
+
+.footerInfo p {
+  margin-left: 20px;
+  line-height: 1.5;
+}
+
+.footerInfo p.right {
+  margin-top: 12px;
+}
+
+.footerInfo a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+.footerInfo a:hover {
+  text-decoration: underline;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
