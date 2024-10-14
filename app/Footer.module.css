@@ -10,6 +10,7 @@
 
 .footerInfo {
   font-size: 14px;
+  min-width: 610px;
 }
 
 .footerInfo p {
@@ -34,6 +35,7 @@
   display: flex;
   gap: 20px;
   padding: 0 20px;
+  min-width: 200px;
 }
 
 .icon {
