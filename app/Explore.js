@@ -1,4 +1,4 @@
-"use client"; // 상태 관리 때문에 클라이언트 컴포넌트로 유지
+"use client";
 
 import { useState } from "react";
 import styles from "./Header.module.css";
@@ -12,18 +12,22 @@ export default function Explore() {
 
   return (
     <>
-      <div className={styles.explore} onMouseEnter={toggleDropdown}>
+      <div
+        className={styles.explore}
+        onMouseEnter={toggleDropdown}
+        onMouseLeave={toggleDropdown}
+      >
         Explore
+        {isDropdownVisible && (
+          <ul className={styles.dropdown}>
+            <li>Extension</li>
+            <li>Rendering</li>
+            <li>Modeling</li>
+            <li>Price</li>
+            <li>Animated</li>
+          </ul>
+        )}
       </div>
-      {isDropdownVisible && (
-        <ul className={styles.dropdown}>
-          <li>Extension</li>
-          <li>Rendering</li>
-          <li>Modeling</li>
-          <li>Price</li>
-          <li>Animated</li>
-        </ul>
-      )}
     </>
   );
 }
