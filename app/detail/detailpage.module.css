@@ -1,0 +1,141 @@
+.minheader {
+  display: flex;
+  top: 82px;
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #2b2b2b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.leftsection {
+  color: red;
+  font-size: 22px;
+  letter-spacing: 0.6px;
+}
+
+.rightsection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  color: red;
+  font-size: 22px;
+  letter-spacing: 0.6px;
+  margin-right: 20px;
+}
+
+.dummy {
+  position: relative;
+  top: 160px;
+  height: 960px;
+}
+
+.sliderContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #808080;
+}
+
+.slider {
+  width: 250px;
+  height: 250px;
+}
+
+.image {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.thumbnailContainer {
+  display: flex;
+  justify-content: center;
+  background-color: #808080;
+}
+
+.thumbnail {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activeThumbnail {
+  opacity: 1;
+  border: 2px solid orange;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prevButton::before {
+  text-align: center;
+  content: "<";
+  font-size: 24px;
+}
+
+.nextButton::before {
+  text-align: center;
+  content: ">";
+  font-size: 24px;
+}
