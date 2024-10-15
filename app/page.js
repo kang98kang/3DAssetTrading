@@ -2,6 +2,7 @@
 
 import styles from "./mainpage.module.css";
 import Button from "../components/common/Button";
+import App from "./example";
 
 export default function Home() {
   return (
@@ -11,11 +12,9 @@ export default function Home() {
       <p style={{ color: "green" }}>Button Test</p>
       <div style={{ display: "flex", gap: 20 }}>
         <Button
-          backgroundColor="#2b2b2b"
-          width="50px"
-          height="34px"
-          label="Login"
-          onClick={() => alert("Login Button TEST!")}
+          backgroundColor="red"
+          label="Red"
+          onClick={() => alert("RED TEST!")}
         />
         <Button
           backgroundColor="green"
@@ -28,6 +27,7 @@ export default function Home() {
           onClick={() => alert("Blue TEST!")}
         />
       </div>
+      <App />
     </div>
   );
 }
