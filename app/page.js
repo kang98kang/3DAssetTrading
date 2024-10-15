@@ -26,20 +26,10 @@ export default function Home() {
       <div style={{ display: "flex", gap: 20 }}>
         <Button
           backgroundColor="#2b2b2b"
-          width="50px"
+          width="auto"
           height="34px"
-          label="Login"
-          onClick={() => alert("Login Button TEST!")}
-        />
-        <Button
-          backgroundColor="green"
-          label="Green"
-          onClick={() => alert("Green TEST!")}
-        />
-        <Button
-          backgroundColor="blue"
-          label="Blue"
-          onClick={() => alert("Blue TEST!")}
+          label="Go to detailpage"
+          onClick={handleDetail}
         />
       </div>
     </motion.div>
