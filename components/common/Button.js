@@ -1,17 +1,27 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import styles from "./Button.module.css";
 
-const Button = ({ backgroundColor = "blue", label, onClick }) => {
+const Button = ({
+  width,
+  height,
+  backgroundColor = "blue",
+  label,
+  onClick,
+}) => {
   return (
-    <button
+    <motion.button
       className={styles.button}
-      style={{ backgroundColor }}
+      style={{ backgroundColor, width, height }}
       onClick={onClick}
+      whileHover={{ scale: 1.1, backgroundColor: "#bbb", color: "black" }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
       {label}
-    </button>
+    </motion.button>
   );
 };
 

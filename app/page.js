@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./mainpage.module.css";
-import Button from "../components/common/button";
+import Button from "../components/common/Button";
 
 export default function Home() {
   return (
@@ -11,9 +11,11 @@ export default function Home() {
       <p style={{ color: "green" }}>Button Test</p>
       <div style={{ display: "flex", gap: 20 }}>
         <Button
-          backgroundColor="red"
-          label="Red"
-          onClick={() => alert("RED TEST!")}
+          backgroundColor="#2b2b2b"
+          width="50px"
+          height="34px"
+          label="Login"
+          onClick={() => alert("Login Button TEST!")}
         />
         <Button
           backgroundColor="green"
