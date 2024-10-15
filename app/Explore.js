@@ -78,65 +78,43 @@ export default function Explore() {
         variants={dropdownVariants}
       >
         <motion.ul>
+          <motion.li variants={itemVariants}>머리카락</motion.li>
           <motion.li
             variants={itemVariants}
-            onMouseEnter={() => toggleSubmenu("Extension")}
+            onMouseEnter={() => toggleSubmenu("car")}
             onMouseLeave={() => toggleSubmenu(null)}
           >
-            Extension
-            {activeSubmenu === "Extension" && (
+            차량
+            {activeSubmenu === "car" && (
               <motion.ul
                 className={styles.submenu}
                 initial="hidden"
                 animate="visible"
                 variants={submenuVariants}
               >
-                <motion.li variants={itemVariants}>All extension</motion.li>
-                <motion.li variants={itemVariants}>OBJ</motion.li>
-                <motion.li variants={itemVariants}>FBX</motion.li>
+                <motion.li variants={itemVariants}>소형</motion.li>
+                <motion.li variants={itemVariants}>중형</motion.li>
+                <motion.li variants={itemVariants}>대형</motion.li>
               </motion.ul>
             )}
           </motion.li>
           <motion.li
             variants={itemVariants}
-            onMouseEnter={() => toggleSubmenu("Rendering")}
+            onMouseEnter={() => toggleSubmenu("clothes")}
             onMouseLeave={() => toggleSubmenu(null)}
           >
-            Rendering
-            {activeSubmenu === "Rendering" && (
+            옷
+            {activeSubmenu === "clothes" && (
               <motion.ul
                 className={styles.submenu}
                 initial="hidden"
                 animate="visible"
                 variants={submenuVariants}
               >
-                <motion.li variants={itemVariants}>A</motion.li>
-                <motion.li variants={itemVariants}>B</motion.li>
+                <motion.li variants={itemVariants}>상의</motion.li>
+                <motion.li variants={itemVariants}>하의</motion.li>
               </motion.ul>
             )}
-          </motion.li>
-          <motion.li
-            variants={itemVariants}
-            onMouseEnter={() => toggleSubmenu("Modeling")}
-            onMouseLeave={() => toggleSubmenu(null)}
-          >
-            Modeling
-            {activeSubmenu === "Modeling" && (
-              <motion.ul
-                className={styles.submenu}
-                initial="hidden"
-                animate="visible"
-                variants={submenuVariants}
-              >
-                <motion.li variants={itemVariants}>Maya</motion.li>
-                <motion.li variants={itemVariants}>Max</motion.li>
-                <motion.li variants={itemVariants}>Blender</motion.li>
-              </motion.ul>
-            )}
-          </motion.li>
-          <motion.li variants={itemVariants}>Price</motion.li>
-          <motion.li variants={itemVariants} className={styles.checkbox}>
-            Animated
           </motion.li>
         </motion.ul>
       </motion.div>
