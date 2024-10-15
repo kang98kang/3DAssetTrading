@@ -2,7 +2,6 @@
 
 import styles from "./mainpage.module.css";
 import Button from "../components/common/Button";
-import App from "./example";
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
           onClick={() => alert("Blue TEST!")}
         />
       </div>
-      <App />
     </div>
   );
 }

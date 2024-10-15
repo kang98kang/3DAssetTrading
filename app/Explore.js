@@ -135,7 +135,9 @@ export default function Explore() {
             )}
           </motion.li>
           <motion.li variants={itemVariants}>Price</motion.li>
-          <motion.li variants={itemVariants}>Animated</motion.li>
+          <motion.li variants={itemVariants} className={styles.checkbox}>
+            Animated
+          </motion.li>
         </motion.ul>
       </motion.div>
     </div>
