@@ -1,0 +1,54 @@
+.dummy {
+  background-color: white;
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+  color: yellow;
+  font-size: 20px;
+  height: auto;
+}
+
+.divisionline {
+  border-top: 2px solid whitesmoke;
+}
+
+.nav {
+  top: 0px;
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #2b2b2b;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter1 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.filter2 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.filter3 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.filter4 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.filter5 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
