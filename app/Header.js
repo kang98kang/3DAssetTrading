@@ -1,15 +1,25 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import styles from "./Header.module.css";
 import Explore from "./Explore";
 import Button from "../components/common/Button";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <>
       <div className={styles.header}>
         <div className={styles.logoContainer}>
-          <div className={styles.logo}>Logo</div>
+          <div
+            style={{ cursor: "pointer" }}
+            className={styles.logo}
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            Logo
+          </div>
           <div className={`${styles.logo} ${styles.name}`}>Name</div>
           <Explore />
         </div>
