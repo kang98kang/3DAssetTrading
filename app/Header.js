@@ -1,5 +1,8 @@
+"use client";
+
 import styles from "./Header.module.css";
 import Explore from "./Explore";
+import Button from "../components/common/Button";
 
 export default function Header() {
   return (
@@ -12,8 +15,20 @@ export default function Header() {
         </div>
         <input type="text" placeholder="SearchBar" className={styles.nav} />
         <div className={styles.loginContainer}>
-          <div className={styles.login}>Login</div>
-          <div className={styles.login}>Signin</div>
+          <Button
+            backgroundColor="#2b2b2b"
+            width="55px"
+            height="34px"
+            label="Login"
+            onClick={() => alert("Login Button TEST!")}
+          />
+          <Button
+            backgroundColor="#2b2b2b"
+            width="60px"
+            height="34px"
+            label="Signin"
+            onClick={() => alert("SignIn Button TEST!")}
+          />
         </div>
       </div>
     </>
