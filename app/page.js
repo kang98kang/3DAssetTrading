@@ -26,10 +26,10 @@ export default function Home() {
       <div style={{ display: "flex", gap: 20 }}>
         <Button
           backgroundColor="#2b2b2b"
-          width="auto"
+          width="50px"
           height="34px"
-          label="Go to detailpage!!"
-          onClick={handleDetail}
+          label="Login"
+          onClick={() => alert("Login Button TEST!")}
         />
         <Button
           backgroundColor="green"
