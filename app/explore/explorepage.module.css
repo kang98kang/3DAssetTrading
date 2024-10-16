@@ -2,7 +2,7 @@
   background-color: white;
   margin-top: 80px;
   min-height: calc(100vh - 80px);
-  color: yellow;
+  color: cyan;
   font-size: 20px;
   height: auto;
 }
@@ -23,31 +23,7 @@
   align-items: center;
 }
 
-.filter1 {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-
-.filter2 {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-
-.filter3 {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-
-.filter4 {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-
-.filter5 {
+.filter {
   display: flex;
   flex: 1;
   justify-content: center;
