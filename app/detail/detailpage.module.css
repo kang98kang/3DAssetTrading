@@ -1,10 +1,10 @@
 .minheader {
   display: flex;
-  top: 82px;
+  top: 80px;
   height: 80px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #2b2b2b;
+  background-color: #3a3a3a;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,35 +12,37 @@
   padding: 0 20px;
 }
 
-.leftsection {
-  color: red;
-  font-size: 22px;
-  letter-spacing: 0.6px;
+.productContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
 }
 
-.rightsection {
+.leftSection .filename {
+  font-weight: bold;
+  color: red;
+  font-size: 22px;
+}
+
+.rightSection {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .price {
+  font-weight: bold;
   color: red;
   font-size: 22px;
-  letter-spacing: 0.6px;
   margin-right: 20px;
-}
-
-.dummy {
-  position: relative;
-  top: 160px;
-  height: 960px;
 }
 
 .sliderContainer {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 770px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -66,11 +68,23 @@
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 }
 
+.slideInfo {
+  position: absolute;
+  top: 200px;
+  right: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
 .thumbnailContainer {
   display: flex;
   justify-content: center;
   background-color: #808080;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .thumbnail {
@@ -99,25 +113,50 @@
   z-index: 1;
 }
 
+.paginationButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.paginationButtons button {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.paginationButtons button:hover {
+  background-color: #666666;
+}
+
+.paginationButtons button:disabled {
+  visibility: hidden;
+}
+
+.prevPaginationButton {
+  left: 10px;
+  position: absolute;
+}
+
+.nextPaginationButton {
+  right: 10px;
+  position: absolute;
+}
+
 .prevButton,
 .nextButton {
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   right: 10px;
-
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   cursor: pointer;
-
   transition: background-color 0.3s ease;
 }
 
@@ -125,69 +164,83 @@
   left: 10px;
 }
 
+.prevButtonImg {
+  transform: scaleX(-1);
+  margin-right: 4px;
+}
+
 .nextButton {
   right: 10px;
+}
+
+.nextButtonImg {
+  margin-left: 4px;
 }
 
 .prevButton:hover,
 .nextButton:hover {
   background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prevButton::before {
-  text-align: center;
-  content: "<";
-  font-size: 24px;
-}
-
-.nextButton::before {
-  text-align: center;
-  content: ">";
-  font-size: 24px;
+  border: 2px solid #84a9a6;
 }
 
 .contentContainer {
   display: flex;
+  height: 600px;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 50px;
+  padding-bottom: 40px;
+  background-color: #2b2b2b;
 }
 
 .mainContent {
-  width: 70%;
-  height: 400px;
+  width: 71.4%;
+  min-width: 70%;
+  border-radius: 5px;
   background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
   color: red;
   font-size: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sideContent {
-  width: 25%;
+  width: 28%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .sideItem {
+  flex: 1;
+  min-width: 18%;
+  max-height: 127.5px;
   background-color: #eee;
-  padding: 20px;
+  padding: 10px 10px;
   border-radius: 5px;
-  color: gray;
-  font-weight: bold;
   border: 1px solid #ddd;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  position: relative;
 }
 
-.sideItem::after {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #ddd;
+.sideTitle {
+  color: gray;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  max-height: 127.5px;
+}
+
+.sideContentDetail {
+  color: red;
+  max-height: 50px;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
