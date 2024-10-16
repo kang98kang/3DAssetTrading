@@ -12,7 +12,6 @@ export default function Header() {
       <div className={styles.header}>
         <div className={styles.logoContainer}>
           <div
-            style={{ cursor: "pointer" }}
             className={styles.logo}
             onClick={() => {
               router.push("/");
