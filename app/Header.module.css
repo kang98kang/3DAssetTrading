@@ -48,7 +48,7 @@
 
 .nav:focus {
   outline: none;
-  border: 2px solid greenyellow;
+  border: 2px solid #84a9a6;
   background-color: #555;
 }
 
@@ -56,8 +56,8 @@
   display: flex;
   justify-content: right;
   margin-left: 15px;
-  gap: 10px;
-  margin-right: 30px;
+  gap: 30px;
+  margin-right: 35px;
 }
 
 .login {

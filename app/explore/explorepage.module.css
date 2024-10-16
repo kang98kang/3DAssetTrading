@@ -2,7 +2,7 @@
   background-color: white;
   margin-top: 80px;
   min-height: calc(100vh - 80px);
-  color: cyan;
+  color: white;
   font-size: 20px;
   height: auto;
 }
@@ -27,4 +27,32 @@
   display: flex;
   flex: 1;
   justify-content: center;
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 150%;
+  left: 0;
+  width: 100%;
+  background-color: #2b2b2b;
+  z-index: 10;
+}
+
+.filter:hover .dropdown {
+  display: block;
+  transition: transform 1s ease;
+}
+
+.dropdownItem {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
 }

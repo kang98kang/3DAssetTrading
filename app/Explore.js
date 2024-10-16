@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import styles from "./Header.module.css";
 
@@ -56,12 +57,18 @@ export default function Explore() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
+  const router = useRouter();
+
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
   };
 
   const toggleSubmenu = (item) => {
     setActiveSubmenu(activeSubmenu === item ? null : item);
+  };
+
+  const handleFilterClick = (filter) => {
+    router.push(`/explore?filter=${filter}`);
   };
 
   return (
@@ -78,41 +85,71 @@ export default function Explore() {
         variants={dropdownVariants}
       >
         <motion.ul>
-          <motion.li variants={itemVariants}>머리카락</motion.li>
           <motion.li
             variants={itemVariants}
-            onMouseEnter={() => toggleSubmenu("car")}
+            onClick={() => handleFilterClick("hair")}
+          >
+            머리카락
+          </motion.li>
+          <motion.li
+            variants={itemVariants}
+            onMouseEnter={() => toggleSubmenu("vehicle")}
             onMouseLeave={() => toggleSubmenu(null)}
           >
             차량
-            {activeSubmenu === "car" && (
+            {activeSubmenu === "vehicle" && (
               <motion.ul
                 className={styles.submenu}
                 initial="hidden"
                 animate="visible"
                 variants={submenuVariants}
               >
-                <motion.li variants={itemVariants}>소형</motion.li>
-                <motion.li variants={itemVariants}>중형</motion.li>
-                <motion.li variants={itemVariants}>대형</motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  onClick={() => handleFilterClick("compact")}
+                >
+                  소형
+                </motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  onClick={() => handleFilterClick("mid-size")}
+                >
+                  중형
+                </motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  onClick={() => handleFilterClick("large")}
+                >
+                  대형
+                </motion.li>
               </motion.ul>
             )}
           </motion.li>
           <motion.li
             variants={itemVariants}
-            onMouseEnter={() => toggleSubmenu("clothes")}
+            onMouseEnter={() => toggleSubmenu("clothing")}
             onMouseLeave={() => toggleSubmenu(null)}
           >
             옷
-            {activeSubmenu === "clothes" && (
+            {activeSubmenu === "clothing" && (
               <motion.ul
                 className={styles.submenu}
                 initial="hidden"
                 animate="visible"
                 variants={submenuVariants}
               >
-                <motion.li variants={itemVariants}>상의</motion.li>
-                <motion.li variants={itemVariants}>하의</motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  onClick={() => handleFilterClick("top")}
+                >
+                  상의
+                </motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  onClick={() => handleFilterClick("bottom")}
+                >
+                  하의
+                </motion.li>
               </motion.ul>
             )}
           </motion.li>
