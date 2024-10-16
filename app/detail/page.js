@@ -3,16 +3,56 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./detailpage.module.css";
+import Button from "@/components/common/Button";
 
 const images = [
   { src: "/images/image1.jpg", alt: "Image 1" },
   { src: "/images/image2.jpg", alt: "Image 2" },
   { src: "/images/image3.webp", alt: "Image 3" },
   { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
+  { src: "/images/image1.jpg", alt: "Image 1" },
+  { src: "/images/image2.jpg", alt: "Image 2" },
+  { src: "/images/image3.webp", alt: "Image 3" },
+  { src: "/images/image4.webp", alt: "Image 4" },
 ];
+
+const thumbnailPerPage = 20;
 
 export default function Detail() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(false);
 
   const nextSlide = () => {
@@ -47,6 +87,25 @@ export default function Detail() {
     }),
   };
 
+  const handleNextThumbnail = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrevThumbnail = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const currentThumbnails = images.slice(
+    currentPage * thumbnailPerPage,
+    (currentPage + 1) * thumbnailPerPage
+  );
+
+  const totalPages = Math.ceil(images.length / thumbnailPerPage);
+
   const handleThumbnailClick = (index) => {
     setDirection(index > currentIndex ? false : true);
     setCurrentIndex(index);
@@ -63,6 +122,28 @@ export default function Detail() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <div className={styles.minheader}>
+        <div className={styles.productContainer}>
+          <div className={styles.leftSection}>
+            <span className={styles.filename}>filename</span>
+          </div>
+          <div className={styles.rightSection}>
+            <span className={styles.price}>Price</span>
+            <Button
+              backgroundColor="#3a3a3a"
+              width="100px"
+              height="40px"
+              label="구매하기"
+            />
+            <Button
+              backgroundColor="#3a3a3a"
+              width="100px"
+              height="40px"
+              label="장바구니"
+            />
+          </div>
+        </div>
+      </div>
       <div className={styles.sliderContainer}>
         <div className={styles.slider}>
           <AnimatePresence initial={false} custom={direction}>
@@ -99,24 +180,51 @@ export default function Detail() {
             />
           </button>
         )}
+
+        <div className={styles.slideInfo}>
+          {currentIndex + 1} of {images.length}
+        </div>
       </div>
 
-      <div className={styles.thumbnailContainer}>
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`${styles.thumbnail} ${
-              currentIndex === index ? styles.activeThumbnail : ""
-            }`}
-            onClick={() => handleThumbnailClick(index)}
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className={styles.thumbnailImage}
-            />
+      <div>
+        <div className={styles.thumbnailContainer}>
+          {currentThumbnails.map((image, index) => (
+            <div
+              key={index}
+              className={`${styles.thumbnail} ${
+                currentIndex === index + currentPage * thumbnailPerPage
+                  ? styles.activeThumbnail
+                  : ""
+              }`}
+              onClick={() =>
+                handleThumbnailClick(index + currentPage * thumbnailPerPage)
+              }
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className={styles.thumbnailImage}
+              />
+            </div>
+          ))}
+
+          <div className={styles.paginationButtons}>
+            <button
+              className={styles.prevPaginationButton}
+              onClick={handlePrevThumbnail}
+              disabled={currentPage === 0}
+            >
+              prev
+            </button>
+            <button
+              className={styles.nextPaginationButton}
+              onClick={handleNextThumbnail}
+              disabled={currentPage >= totalPages - 1}
+            >
+              next
+            </button>
           </div>
-        ))}
+        </div>
       </div>
 
       <div className={styles.contentContainer}>
@@ -127,26 +235,22 @@ export default function Detail() {
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>EXTENSION</div>
             <div className={styles.sideContentDetail}>
-              Extension 내용이 들어갈 부분
+              Extension 들어갈 부분
             </div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>RENDERING</div>
             <div className={styles.sideContentDetail}>
-              Rendering 내용이 들어갈 부분
+              Rendering 들어갈 부분
             </div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>MODELING</div>
-            <div className={styles.sideContentDetail}>
-              Modeling 내용이 들어갈 부분
-            </div>
+            <div className={styles.sideContentDetail}>Modeling 들어갈 부분</div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>Animated</div>
-            <div className={styles.sideContentDetail}>
-              Animated 내용이 들어갈 부분
-            </div>
+            <div className={styles.sideContentDetail}>Animated 들어갈 부분</div>
           </div>
         </div>
       </div>
