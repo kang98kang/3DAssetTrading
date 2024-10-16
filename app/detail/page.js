@@ -81,11 +81,23 @@ export default function Detail() {
         </div>
 
         {currentIndex !== 0 && (
-          <button onClick={prevSlide} className={styles.prevButton}></button>
+          <button onClick={prevSlide} className={styles.prevButton}>
+            <img
+              src="/icons/Vector.svg"
+              alt="Previous"
+              className={styles.prevButtonImg}
+            />
+          </button>
         )}
 
         {currentIndex !== images.length - 1 && (
-          <button onClick={nextSlide} className={styles.nextButton}></button>
+          <button onClick={nextSlide} className={styles.nextButton}>
+            <img
+              src="/icons/Vector.svg"
+              alt="Next"
+              className={styles.nextButtonImg}
+            />
+          </button>
         )}
       </div>
 
@@ -112,10 +124,30 @@ export default function Detail() {
           <p>작성자 게시글 표시 부분</p>
         </div>
         <div className={styles.sideContent}>
-          <div className={styles.sideItem}>EXTENSION</div>
-          <div className={styles.sideItem}>RENDERING</div>
-          <div className={styles.sideItem}>MODELING</div>
-          <div className={styles.sideItem}>Animated</div>
+          <div className={styles.sideItem}>
+            <div className={styles.sideTitle}>EXTENSION</div>
+            <div className={styles.sideContentDetail}>
+              Extension 내용이 들어갈 부분
+            </div>
+          </div>
+          <div className={styles.sideItem}>
+            <div className={styles.sideTitle}>RENDERING</div>
+            <div className={styles.sideContentDetail}>
+              Rendering 내용이 들어갈 부분
+            </div>
+          </div>
+          <div className={styles.sideItem}>
+            <div className={styles.sideTitle}>MODELING</div>
+            <div className={styles.sideContentDetail}>
+              Modeling 내용이 들어갈 부분
+            </div>
+          </div>
+          <div className={styles.sideItem}>
+            <div className={styles.sideTitle}>Animated</div>
+            <div className={styles.sideContentDetail}>
+              Animated 내용이 들어갈 부분
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
