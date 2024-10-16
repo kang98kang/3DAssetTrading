@@ -106,6 +106,18 @@ export default function Detail() {
           </div>
         ))}
       </div>
+
+      <div className={styles.contentContainer}>
+        <div className={styles.mainContent}>
+          <p>작성자 게시글 표시 부분</p>
+        </div>
+        <div className={styles.sideContent}>
+          <div className={styles.sideItem}>EXTENSION</div>
+          <div className={styles.sideItem}>RENDERING</div>
+          <div className={styles.sideItem}>MODELING</div>
+          <div className={styles.sideItem}>Animated</div>
+        </div>
+      </div>
     </motion.div>
   );
 }

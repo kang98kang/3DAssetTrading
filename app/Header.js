@@ -18,7 +18,7 @@ export default function Header() {
               router.push("/");
             }}
           >
-            Logo
+            logo
           </div>
           <div className={`${styles.logo} ${styles.name}`}>Name</div>
           <Explore />
