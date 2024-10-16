@@ -27,14 +27,14 @@ export default function Header() {
         <div className={styles.loginContainer}>
           <Button
             backgroundColor="#2b2b2b"
-            width="55px"
+            width="70px"
             height="34px"
             label="Login"
             onClick={() => alert("Login Button TEST!")}
           />
           <Button
             backgroundColor="#2b2b2b"
-            width="60px"
+            width="75px"
             height="34px"
             label="Signin"
             onClick={() => alert("SignIn Button TEST!")}
