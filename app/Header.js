@@ -20,10 +20,17 @@ export default function Header() {
           >
             logo
           </div>
-          <div className={`${styles.logo} ${styles.name}`}>Name</div>
+          <div
+            className={`${styles.logo} ${styles.name}`}
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            Name
+          </div>
           <Explore />
         </div>
-        <input type="text" placeholder="SearchBar" className={styles.nav} />
+        <input type="text" className={styles.nav} />
         <div className={styles.loginContainer}>
           <Button
             backgroundColor="#2b2b2b"

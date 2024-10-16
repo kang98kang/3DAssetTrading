@@ -21,8 +21,8 @@
       "Hair",
       "Vehicle",
       "Compact",
-      "Middle Size",
-      "Big Size",
+      "Mid-size",
+      "Large",
       "Clothing",
       "Top",
       "Bottom"
@@ -30,7 +30,7 @@
     "Login": ["Login", "Logout", "Signin"],
     "Footer": [
       "Monsteratec Co. Ltd.",
-      "764-88-02769 / 3rd and 4th floors, Geonil Building, 161 Hakdong-ro, Gangnam-gu, Seoul / hj.kwon@monsteraedu.co.kr"
+      "764-88-02769 / 3F, 4F Geonil Building, 161 Hakdong-ro, Gangnam-gu, Seoul / hj.kwon@monsteraedu.co.kr"
     ]
   }
 }
