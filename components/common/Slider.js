@@ -38,6 +38,12 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
   };
 
   const handleThumbnailClick = (index) => {
+    if (currentIndex > index) {
+      setDirection(false);
+    } else {
+      setDirection(true);
+    }
+
     setCurrentIndex(index);
   };
 
@@ -49,17 +55,20 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
   const boxVariants = {
     entry: (direction) => ({
       x: direction ? -500 : 500,
+      y: 0,
       opacity: 0,
       scale: 0,
     }),
     center: {
       opacity: 1,
       x: 0,
+      y: 0,
       scale: 1,
       transition: { duration: 0.5 },
     },
     exit: (direction) => ({
       x: direction ? 500 : -500,
+      y: 0,
       opacity: 0,
       scale: 0,
       transition: { duration: 0.5 },
