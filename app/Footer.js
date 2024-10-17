@@ -1,22 +1,25 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import styles from "./Footer.module.css";
-import * as fs from "fs";
-import path from "path";
 
 export default function Footer() {
-  // const dir = path.join(__dirname, "/public/language.json");
-  // const textFile = fs.readFileSync(dir, "utf8");
-  // console.log(dir);
+  const language = useSelector((state) => state.language.language);
+  const [translations, setTranslations] = useState({});
 
-  // console.log(textFile);
+  useEffect(() => {
+    fetch("/language.json")
+      .then((response) => response.json())
+      .then((data) => setTranslations(data));
+  }, []);
+
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.footerInfo}>
-        <p>주식회사 몬스테라텍</p>
-        <p>
-          764-88-02769 / 서울특별시 강남구 학동로 161, 건일빌딩 3층, 4층 /
-          hj.kwon@monsteraedu.co.kr
-        </p>
+        <p>{translations[language]?.Footer[0]}</p>
+        <p>{translations[language]?.Footer[1]}</p>
         <p className={styles.right}>© MonsteraTech. ALL RIGHTS RESERVED.</p>
       </div>
       <div className={styles.iconContainer}>

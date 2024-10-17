@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./detailpage.module.css";
 import Button from "@/components/common/Button";
@@ -51,6 +52,15 @@ const images = [
 const thumbnailPerPage = 20;
 
 export default function Detail() {
+  const language = useSelector((state) => state.language.language);
+  const [translations, setTranslations] = useState({});
+
+  useEffect(() => {
+    fetch("/language.json")
+      .then((response) => response.json())
+      .then((data) => setTranslations(data));
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(false);
@@ -131,15 +141,15 @@ export default function Detail() {
             <span className={styles.price}>Price</span>
             <Button
               backgroundColor="#3a3a3a"
-              width="100px"
+              width="auto"
               height="40px"
-              label="구매하기"
+              label={translations[language]?.Detail[0]}
             />
             <Button
               backgroundColor="#3a3a3a"
-              width="100px"
+              width="auto"
               height="40px"
-              label="장바구니"
+              label={translations[language]?.Detail[1]}
             />
           </div>
         </div>
@@ -233,24 +243,16 @@ export default function Detail() {
         </div>
         <div className={styles.sideContent}>
           <div className={styles.sideItem}>
-            <div className={styles.sideTitle}>EXTENSION</div>
-            <div className={styles.sideContentDetail}>
-              Extension 들어갈 부분
-            </div>
+            <div className={styles.sideTitle}>FILE</div>
+            <div className={styles.sideContentDetail}>FILE 들어갈 부분</div>
           </div>
           <div className={styles.sideItem}>
-            <div className={styles.sideTitle}>RENDERING</div>
-            <div className={styles.sideContentDetail}>
-              Rendering 들어갈 부분
-            </div>
+            <div className={styles.sideTitle}>PROGRAM</div>
+            <div className={styles.sideContentDetail}>PROGRAM 들어갈 부분</div>
           </div>
           <div className={styles.sideItem}>
-            <div className={styles.sideTitle}>MODELING</div>
-            <div className={styles.sideContentDetail}>Modeling 들어갈 부분</div>
-          </div>
-          <div className={styles.sideItem}>
-            <div className={styles.sideTitle}>Animated</div>
-            <div className={styles.sideContentDetail}>Animated 들어갈 부분</div>
+            <div className={styles.sideTitle}>ETC</div>
+            <div className={styles.sideContentDetail}>ETC 들어갈 부분</div>
           </div>
         </div>
       </div>

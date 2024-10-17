@@ -4,11 +4,16 @@
   align-items: center;
   border: none;
   color: white;
-  padding: 20px;
+  padding: 10px 25px;
   text-align: center;
-  font-size: 14px;
+  font-size: 1em;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+
+.buttonKo {
+  font-size: 0.8em;
 }
