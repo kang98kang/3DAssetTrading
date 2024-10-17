@@ -12,6 +12,17 @@
   padding: 0 20px;
 }
 
+.slideInfo {
+  position: absolute;
+  top: 220px;
+  right: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
 .productContainer {
   display: flex;
   justify-content: space-between;
