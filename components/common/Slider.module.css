@@ -1,0 +1,81 @@
+/* Slider.module.css */
+.sliderContainer {
+  display: flex;
+  width: 100%;
+  height: 770px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #808080;
+}
+
+.slider {
+  width: 250px;
+  height: 250px;
+}
+
+.image {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.slideInfo {
+  position: absolute;
+  top: 200px;
+  right: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.prevButtonImg {
+  transform: scaleX(-1);
+  margin-right: 4px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.nextButtonImg {
+  margin-left: 4px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #84a9a6;
+}

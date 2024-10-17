@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
 import styles from "./detailpage.module.css";
 import Button from "@/components/common/Button";
+import Slider from "@/components/common/Slider";
+import ThumbnailSlider from "@/components/common/ThumbnailSlider";
 
 const images = [
   { src: "/images/image1.jpg", alt: "Image 1" },
@@ -49,11 +50,10 @@ const images = [
   { src: "/images/image4.webp", alt: "Image 4" },
 ];
 
-const thumbnailPerPage = 20;
-
 export default function Detail() {
   const language = useSelector((state) => state.language.language);
   const [translations, setTranslations] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     fetch("/language.json")
@@ -61,77 +61,8 @@ export default function Detail() {
       .then((data) => setTranslations(data));
   }, []);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [direction, setDirection] = useState(false);
-
-  const nextSlide = () => {
-    setDirection(false);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setDirection(true);
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const boxVariants = {
-    entry: (direction) => ({
-      x: direction ? -500 : 500,
-      opacity: 0,
-      scale: 0,
-    }),
-    center: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: { duration: 0.5 },
-    },
-    exit: (direction) => ({
-      x: direction ? 500 : -500,
-      opacity: 0,
-      scale: 0,
-      transition: { duration: 0.5 },
-    }),
-  };
-
-  const handleNextThumbnail = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const handlePrevThumbnail = () => {
-    if (currentPage > 0) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
-  };
-
-  const currentThumbnails = images.slice(
-    currentPage * thumbnailPerPage,
-    (currentPage + 1) * thumbnailPerPage
-  );
-
-  const totalPages = Math.ceil(images.length / thumbnailPerPage);
-
-  const handleThumbnailClick = (index) => {
-    setDirection(index > currentIndex ? false : true);
-    setCurrentIndex(index);
-  };
-
-  useEffect(() => {
-    console.log("Slider is rendered");
-  }, []);
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div>
       <div className={styles.minheader}>
         <div className={styles.productContainer}>
           <div className={styles.leftSection}>
@@ -154,88 +85,18 @@ export default function Detail() {
           </div>
         </div>
       </div>
-      <div className={styles.sliderContainer}>
-        <div className={styles.slider}>
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.img
-              custom={direction}
-              variants={boxVariants}
-              key={currentIndex}
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
-              initial="entry"
-              animate="center"
-              exit="exit"
-              className={styles.image}
-            />
-          </AnimatePresence>
-        </div>
 
-        {currentIndex !== 0 && (
-          <button onClick={prevSlide} className={styles.prevButton}>
-            <img
-              src="/icons/Vector.svg"
-              alt="Previous"
-              className={styles.prevButtonImg}
-            />
-          </button>
-        )}
+      <Slider
+        images={images}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+      />
 
-        {currentIndex !== images.length - 1 && (
-          <button onClick={nextSlide} className={styles.nextButton}>
-            <img
-              src="/icons/Vector.svg"
-              alt="Next"
-              className={styles.nextButtonImg}
-            />
-          </button>
-        )}
-
-        <div className={styles.slideInfo}>
-          {currentIndex + 1} of {images.length}
-        </div>
-      </div>
-
-      <div>
-        <div className={styles.thumbnailContainer}>
-          {currentThumbnails.map((image, index) => (
-            <div
-              key={index}
-              className={`${styles.thumbnail} ${
-                currentIndex === index + currentPage * thumbnailPerPage
-                  ? styles.activeThumbnail
-                  : ""
-              }`}
-              onClick={() =>
-                handleThumbnailClick(index + currentPage * thumbnailPerPage)
-              }
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className={styles.thumbnailImage}
-              />
-            </div>
-          ))}
-
-          <div className={styles.paginationButtons}>
-            <button
-              className={styles.prevPaginationButton}
-              onClick={handlePrevThumbnail}
-              disabled={currentPage === 0}
-            >
-              prev
-            </button>
-            <button
-              className={styles.nextPaginationButton}
-              onClick={handleNextThumbnail}
-              disabled={currentPage >= totalPages - 1}
-            >
-              next
-            </button>
-          </div>
-        </div>
-      </div>
+      <ThumbnailSlider
+        images={images}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+      />
 
       <div className={styles.contentContainer}>
         <div className={styles.mainContent}>
@@ -256,6 +117,6 @@ export default function Detail() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
