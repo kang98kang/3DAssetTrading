@@ -1,0 +1,152 @@
+.sliderContainer {
+  display: flex;
+  width: 100%;
+  height: 770px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #808080;
+}
+
+.slider {
+  width: 250px;
+  height: 250px;
+}
+
+.image {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.prevButtonImg {
+  transform: scaleX(-1);
+  margin-right: 4px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.nextButtonImg {
+  margin-left: 4px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #84a9a6;
+}
+
+.thumbnailContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: #808080;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.activeThumbnail {
+  opacity: 1;
+  border: 2px solid orange;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.paginationButtons {
+  display: flex;
+  margin-top: 20px;
+}
+
+.paginationButtons button {
+  transform: translateY(-50%);
+  filter: contrast(4);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.paginationButtons button:hover {
+  filter: contrast(8);
+}
+
+.paginationButtons button:disabled {
+  visibility: hidden;
+}
+
+.prevPaginationButton {
+  top: 1.5em;
+  left: 8%;
+  position: absolute;
+}
+
+.nextPaginationButton {
+  top: 1.5em;
+  right: 8%;
+  position: absolute;
+}
+
+.prevButtonImg {
+  transform: scaleX(-1);
+  margin-right: 4px;
+}
+
+.nextButtonImg {
+  margin-left: 4px;
+}
