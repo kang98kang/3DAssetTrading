@@ -216,7 +216,6 @@
 .sideItem {
   flex: 1;
   min-width: 18%;
-  max-height: 127.5px;
   background-color: #eee;
   padding: 10px 10px;
   border-radius: 5px;

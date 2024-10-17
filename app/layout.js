@@ -1,3 +1,4 @@
+import ClientProvider from "../components/ClientProvider";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./Header";
@@ -25,9 +26,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <ClientProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ClientProvider>
       </body>
     </html>
   );
