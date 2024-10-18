@@ -26,23 +26,40 @@ export default function Header() {
         <div className={styles.logoContainer}>
           <div
             className={styles.logo}
+            style={{
+              backgroundImage: "url(/images/logo.png)",
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
             onClick={() => {
               router.push("/");
             }}
-          >
-            logo
-          </div>
+          ></div>
           <div
             className={`${styles.logo} ${styles.name}`}
+            style={{
+              backgroundImage: "url(/images/name.png)",
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
             onClick={() => {
               router.push("/");
             }}
-          >
-            Name
-          </div>
+          ></div>
           <Explore />
         </div>
-        <input type="text" className={styles.nav} />
+        <div
+          className={styles.navContainer}
+          onClick={() => router.push("/explore")}
+        >
+          <img
+            src="/icons/search.png"
+            alt="Search Icon"
+            className={styles.searchIcon}
+          />
+        </div>
         <Language />
         <div className={styles.loginContainer}>
           <Button
