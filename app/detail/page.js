@@ -45,38 +45,39 @@ export default function Detail() {
 
   return (
     <div>
-      <div className={styles.minheader}>
-        <div className={styles.productContainer}>
-          <div className={styles.leftSection}>
-            <span className={styles.filename}>filename</span>
-          </div>
-          <div className={styles.rightSection}>
-            <span className={styles.price}>Price</span>
-            <Button
-              backgroundColor="#3a3a3a"
-              width="auto"
-              height="40px"
-              label={translations[language]?.Detail[0]}
-            />
-            <Button
-              backgroundColor="#3a3a3a"
-              width="auto"
-              height="40px"
-              label={translations[language]?.Detail[1]}
-            />
+      <div>
+        <div className={styles.minheader}>
+          <div className={styles.productContainer}>
+            <div className={styles.leftSection}>
+              <span className={styles.filename}>filename</span>
+            </div>
+            <div className={styles.rightSection}>
+              <span className={styles.price}>Price</span>
+              <Button
+                backgroundColor="#3a3a3a"
+                width="auto"
+                height="40px"
+                label={translations[language]?.Detail[0]}
+              />
+              <Button
+                backgroundColor="#3a3a3a"
+                width="auto"
+                height="40px"
+                label={translations[language]?.Detail[1]}
+              />
+            </div>
           </div>
         </div>
       </div>
-
       <div className={styles.slideInfo}>
         {currentIndex + 1} of {images.length}
       </div>
-
       <Slider
         images={images}
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       />
+
       <div className={styles.contentContainer}>
         <div className={styles.mainContent}>
           <p>작성자 게시글 표시 부분</p>
