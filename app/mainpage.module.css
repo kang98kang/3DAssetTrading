@@ -1,8 +1,37 @@
-.dummy {
-  background-color: #abc9c7;
-  margin-top: 80px;
+.mainContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
   min-height: calc(100vh - 80px);
-  color: yellow;
-  font-size: 20px;
-  height: 400px;
+  padding: 0 5%;
+  background-color: #808080; /* 배경색 설정 */
+}
+
+.textSection {
+  flex: 1;
+  color: white;
+}
+
+.textSection h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.textSection p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+}
+.modelSection {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

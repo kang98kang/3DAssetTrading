@@ -1,15 +1,15 @@
 .sliderContainer {
   display: flex;
   width: 100%;
-  height: 770px;
+  height: 90vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: #808080;
+  position: relative;
 }
 
 .slider {
-  max-height: 600px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@
 }
 
 .image {
-  max-height: 600px;
+  max-height: 60vh;
   position: absolute;
   text-align: center;
   display: flex;
@@ -34,9 +34,9 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
-  width: 50px;
-  height: 50px;
+  right: 0.5vw;
+  width: 2.6vw;
+  height: 2.6vw;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -48,20 +48,28 @@
 }
 
 .prevButton {
-  left: 10px;
+  left: 0.5vw;
+  object-fit: cover;
 }
 
 .prevButtonImg {
+  width: 50%;
+  height: 50%;
   transform: scaleX(-1);
-  margin-right: 4px;
+  margin-right: 0.2vw;
+  object-fit: cover;
 }
 
 .nextButton {
-  right: 10px;
+  right: 0.5vw;
+  object-fit: cover;
 }
 
 .nextButtonImg {
-  margin-left: 4px;
+  width: 50%;
+  height: 50%;
+  margin-left: 0.2vw;
+  object-fit: cover;
 }
 
 .prevButton:hover,
@@ -71,50 +79,59 @@
 }
 
 .thumbnailContainer {
-  position: relative;
+  position: absolute;
+  min-height: 40px;
+  max-height: 5.5vh;
+  bottom: 8vh;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   background-color: #808080;
-  gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.thumbnailImgContainer {
+  min-height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.2vw;
+  max-height: 5.5vh;
+  position: relative;
 }
 
 .thumbnail {
-  width: 50px;
-  height: 50px;
-  margin: 0 5px;
+  width: 2.6vw;
+  height: 2.6vw;
   cursor: pointer;
   opacity: 0.5;
   border: 2px solid transparent;
   transition: all 0.3s ease;
-  margin-bottom: 10px;
+  margin-bottom: 0.9vh;
 }
 
 .thumbnailImage {
   width: 100%;
   height: 100%;
-  border-radius: 9px;
+  border-radius: 0.8vh;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 0.9vh;
 }
 
 .activeThumbnail {
   opacity: 1;
-  border: 2px solid orange;
-  border-radius: 10px;
+  border: 0.13vw solid orange;
+  border-radius: 0.8vh;
   z-index: 1;
 }
 
-.paginationButtons {
-  display: flex;
-  margin-top: 20px;
-}
-
-.paginationButtons button {
+.thumbnailImgContainer button {
   transform: translateY(-50%);
   filter: contrast(4);
-  width: 35px;
-  height: 35px;
+  width: 1.8vw;
+  height: 1.8vw;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -122,33 +139,31 @@
   border: none;
   cursor: pointer;
   transition: filter 0.3s ease;
+  position: absolute;
+  top: 50%;
 }
 
-.paginationButtons button:hover {
+.thumbnailImgContainer button:hover {
   filter: contrast(8);
 }
 
-.paginationButtons button:disabled {
+.thumbnailImgContainer button:disabled {
   visibility: hidden;
 }
 
 .prevPaginationButton {
-  top: 1.5em;
-  left: 8%;
-  position: absolute;
+  left: -3vw;
 }
 
 .nextPaginationButton {
-  top: 1.5em;
-  right: 8%;
-  position: absolute;
+  right: -3vw;
 }
 
 .prevButtonImg {
   transform: scaleX(-1);
-  margin-right: 4px;
+  margin-right: 0.2vw;
 }
 
 .nextButtonImg {
-  margin-left: 4px;
+  margin-left: 0.2vw;
 }

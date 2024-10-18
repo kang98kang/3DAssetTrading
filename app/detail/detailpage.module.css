@@ -1,26 +1,33 @@
+.body {
+  width: 100%;
+  height: 100%;
+}
+
 .minheader {
+  z-index: 3;
   display: flex;
-  top: 80px;
   height: 80px;
   width: 100%;
+  margin-top: 80px;
   box-sizing: border-box;
   background-color: #3a3a3a;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  padding: 0 20px;
+  position: block;
+  padding: 0 1.04vw;
 }
 
 .slideInfo {
+  right: 5%;
+  margin-top: 10vh;
+  z-index: 1;
   position: absolute;
-  top: 220px;
-  right: 100px;
   background-color: rgba(0, 0, 0, 0.2);
   color: rgba(255, 255, 255, 0.4);
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 12px;
+  padding: 0.46vh 0.52vw;
+  border-radius: 0.46vh;
+  font-size: 0.63rem;
 }
 
 .productContainer {
@@ -28,47 +35,51 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px 0;
+  min-width: 48.44vw;
+  padding: 0.52vh 0;
 }
 
 .leftSection .filename {
   font-weight: bold;
   color: red;
-  font-size: 22px;
+  font-size: 1.15rem;
 }
 
 .rightSection {
+  min-width: 15.89vw;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.52vw;
 }
 
 .price {
   font-weight: bold;
   color: red;
-  font-size: 22px;
-  margin-right: 20px;
+  font-size: 1.15rem;
+  margin-right: 1.04vw;
 }
 
 .contentContainer {
   display: flex;
-  height: 600px;
+  min-width: 47.92vw;
+  height: 55.56vh;
+  min-height: 400px;
   justify-content: space-between;
-  padding: 20px 50px;
-  padding-bottom: 40px;
+  padding: 1.85vh 2.6vw;
+  padding-bottom: 3.7vh;
   background-color: #2b2b2b;
 }
 
 .mainContent {
   width: 71.4%;
-  min-width: 70%;
-  border-radius: 5px;
+  min-width: 31.25vw;
+  border-radius: 0.46vh;
   background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
   color: red;
-  font-size: 24px;
+  font-size: 1.25rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -77,36 +88,37 @@
   width: 28%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.52vw;
 }
 
 .sideItem {
   flex: 1;
-  min-width: 18%;
+  min-width: 12.24vw;
   background-color: #eee;
-  padding: 10px 10px;
-  border-radius: 5px;
+  padding: 0.52vw 0.52vw;
+  border-radius: 0.46vh;
   border: 1px solid #ddd;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0.19vh 0.46vh rgba(0, 0, 0, 0.1);
 }
 
 .sideTitle {
   color: gray;
   font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-bottom: 0.52vw;
+  font-size: 0.83rem;
   border-bottom: 1px solid #ddd;
-  max-height: 127.5px;
+  max-height: 11.81vh;
 }
 
 .sideContentDetail {
   color: red;
-  max-height: 50px;
+  max-height: 4.63vh;
+  min-height: 25px;
   background-color: #eee;
-  padding: 10px;
-  border-radius: 3px;
-  font-size: 20px;
-  margin-top: 5px;
+  padding: 0.46vh;
+  border-radius: 0.28vh;
+  font-size: 1.04rem;
+  margin-top: 0.46vh;
   overflow: hidden;
   text-overflow: ellipsis;
 }
