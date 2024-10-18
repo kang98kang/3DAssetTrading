@@ -23,7 +23,6 @@
   padding: 5px;
   height: 40px;
   width: 40px;
-  background-color: red;
   cursor: pointer;
 }
 
@@ -31,26 +30,37 @@
   width: 80px !important ;
 }
 
-.nav {
+.navContainer {
   background-color: #444;
   flex: 1;
   margin: 15px;
-  text-align: center;
   max-width: 650px;
   min-width: 300px;
   height: 35px;
   border-radius: 50px;
+  display: flex;
+  align-items: center;
+  filter: grayscale(100%);
 }
 
-.nav::before {
-  content: url(../public/icons/search.svg);
-  position: absolute;
-}
-
-.nav:focus {
+.navContainer:hover {
   outline: none;
   border: 2px solid #84a9a6;
-  background-color: #555;
+  filter: grayscale(0%);
+}
+
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  margin: 0px 5px 0px 10px;
+}
+
+.nav {
+  flex: 1;
+  flex-shrink: 0;
+  height: 35px;
+  padding: 10px;
+  margin-right: 20px;
 }
 
 .loginContainer {

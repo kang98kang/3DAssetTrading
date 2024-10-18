@@ -1,18 +1,16 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styles from "./explorepage.module.css";
 
 function ExploreContent() {
-  const searchParams = useSearchParams();
   const category = [
-    "Autodesk FBX",
-    "3ds Max",
+    "Autodesk-FBX",
+    "3ds-Max",
     "Blender",
-    "OBJ wavefront",
-    "Cinema 4D",
+    "OBJ-wavefront",
+    "Cinema-4D",
     "Maya",
     "LightWave",
     "Modo",
@@ -21,18 +19,7 @@ function ExploreContent() {
     "Unity",
     "Unreal",
     "Collada",
-    "Polygon File Format",
-  ];
-  const subFilterUrl = searchParams.get("filter");
-  const subFilters = [
-    "hair",
-    "vehicle",
-    "compact",
-    "mid-size",
-    "large",
-    "clothing",
-    "top",
-    "bottom",
+    "Polygon-File-Format",
   ];
 
   const [selectedCategory, setSelectedCategory] = useState([]);
@@ -57,37 +44,20 @@ function ExploreContent() {
     });
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0 },
-  };
-
-  // const listShiftVariants = {
-  //   hidden: { x: -50 },
-  //   visible: { x: 0 },
-  //   exit: { x: 50 },
-  // };
-
-  // 인덱스가 0이거나 선택한 아이템일 경우 애니메이션을 비활성화
-  const shouldDisableShiftAnimation = (filterName, index) => {
-    return index === 0 || selectedCategory.includes(filterName);
-  };
-
-  // 선택 해제 시 본래 인덱스와 현재 인덱스가 일치하는 경우 애니메이션 비활성화
-  const shouldDisableDeselectAnimation = (filterName, index) => {
-    const originalIndex = category.indexOf(filterName);
-    return originalIndex === index;
+  const getItemVariants = (filterName, isSelected) => {
+    if (isSelected) {
+      return {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: { opacity: 1, scale: 1, filter: "grayscale(0%)" },
+        exit: { opacity: 0, scale: 0.8 },
+      };
+    } else {
+      return {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: { opacity: 1, scale: 1, filter: "grayscale(100%)" },
+        exit: { opacity: 0, scale: 0.8 },
+      };
+    }
   };
 
   return (
@@ -95,71 +65,54 @@ function ExploreContent() {
       <div className={styles.divisionline}></div>
       <div className={styles.nav}>
         <motion.div
-          style={{ width: "100%", display: "flex", overflow: "hidden" }}
-          variants={containerVariants}
+          style={{ width: "100%", display: "flex", flexWrap: "wrap" }}
           initial="hidden"
           animate="visible"
         >
-          <AnimatePresence>
-            {selectedCategory.map((filterName, index) => (
-              <motion.div
-                key={filterName}
-                className={styles.inner}
-                onClick={() => handleDeselectFilter(filterName)}
-                layout
-                // 선택 해제 시 본래 인덱스와 현재 인덱스가 일치할 경우 애니메이션 비활성화
-                variants={
-                  shouldDisableDeselectAnimation(filterName, index)
-                    ? {}
-                    : itemVariants
-                }
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ duration: 0.5 }}
-              >
-                <div className={`${styles.filter} ${styles.icon}`}></div>
-                <div className={`${styles.filter} ${styles.selected}`}>
-                  {filterName}
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-          <AnimatePresence>
-            {unselectedCategory.map((filterName, index) => (
-              <motion.div
-                key={filterName}
-                className={styles.inner}
-                onClick={() => handleSelectFilter(filterName)}
-                layout
-                // 인덱스가 0이거나 선택한 아이템일 경우 listShiftVariants 적용 안 함
-                variants="variants"
-                whileHover={{ color: "#ff6347" }}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ duration: 0.5 }}
-              >
-                <div className={`${styles.filter} ${styles.icon}`}></div>
-                <div className={styles.filter}>{filterName}</div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div style={{ display: "flex", flex: 1 }}>
-          {subFilters.map((filterName, index) => (
-            <div
-              key={index}
-              className={styles.filter}
-              style={{ color: subFilterUrl === filterName ? "red" : "black" }}
+          {selectedCategory.map((filterName) => (
+            <motion.div
+              key={filterName}
+              className={styles.inner}
+              onClick={() => handleDeselectFilter(filterName)}
+              layout="position"
+              variants={getItemVariants(filterName, true)}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.5 }}
             >
-              {filterName}
-            </div>
+              <div
+                className={`${styles.filter} ${styles.selected}`}
+                style={{
+                  backgroundImage: `url(/images/explore/${filterName}.png)`,
+                }}
+                title={filterName}
+              ></div>
+            </motion.div>
           ))}
-        </div>
-        <div style={{ backgroundColor: "#84a9a6", flex: 1 }}></div>
+
+          {unselectedCategory.map((filterName) => (
+            <motion.div
+              key={filterName}
+              className={styles.inner}
+              onClick={() => handleSelectFilter(filterName)}
+              layout="position"
+              variants={getItemVariants(filterName, false)}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+            >
+              <div
+                className={`${styles.filter}`}
+                style={{
+                  backgroundImage: `url(/images/explore/${filterName}.png)`,
+                }}
+                title={filterName}
+              ></div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

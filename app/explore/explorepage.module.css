@@ -13,7 +13,7 @@
 
 .nav {
   top: 0px;
-  height: 120px;
+  height: 80px;
   width: 100%;
   box-sizing: border-box;
   background-color: #2b2b2b;
@@ -33,31 +33,24 @@
 
 .filter {
   display: flex;
-  flex: 1;
   justify-content: center;
   align-items: center;
   position: relative;
-  text-wrap: nowrap;
-  font-size: 0.8rem;
-}
-
-.filter:hover {
-  border-color: #ff6347;
-}
-
-.icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  width: 70px;
   margin: 5px;
-  background-color: red;
-  flex: none;
+  width: 3.6em;
+  height: 4.8rem;
+  font-size: 0.8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-wrap: nowrap;
+  cursor: pointer;
 }
 
 .selected {
-  color: red;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .dropdown {
