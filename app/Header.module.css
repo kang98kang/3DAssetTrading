@@ -38,14 +38,14 @@
   min-width: 300px;
   height: 35px;
   border-radius: 50px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   filter: grayscale(100%);
 }
 
 .navContainer:hover {
-  outline: none;
-  border: 2px solid #84a9a6;
+  outline: 2px solid #84a9a6;
   filter: grayscale(0%);
 }
 
