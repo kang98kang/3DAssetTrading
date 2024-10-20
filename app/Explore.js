@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import styles from "./Header.module.css";
@@ -56,6 +57,14 @@ const submenuVariants = {
 export default function Explore() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const language = useSelector((state) => state.language.language);
+  const [translations, setTranslations] = useState({});
+
+  useEffect(() => {
+    fetch("/language.json")
+      .then((response) => response.json())
+      .then((data) => setTranslations(data));
+  }, []);
 
   const router = useRouter();
 
@@ -89,14 +98,14 @@ export default function Explore() {
             variants={itemVariants}
             onClick={() => handleFilterClick("hair")}
           >
-            머리카락
+            {translations[language]?.Explore[0]}
           </motion.li>
           <motion.li
             variants={itemVariants}
             onMouseEnter={() => toggleSubmenu("vehicle")}
             onMouseLeave={() => toggleSubmenu(null)}
           >
-            차량
+            {translations[language]?.Explore[1]}
             {activeSubmenu === "vehicle" && (
               <motion.ul
                 className={styles.submenu}
@@ -108,19 +117,19 @@ export default function Explore() {
                   variants={itemVariants}
                   onClick={() => handleFilterClick("compact")}
                 >
-                  소형
+                  {translations[language]?.Explore[2]}
                 </motion.li>
                 <motion.li
                   variants={itemVariants}
                   onClick={() => handleFilterClick("mid-size")}
                 >
-                  중형
+                  {translations[language]?.Explore[3]}
                 </motion.li>
                 <motion.li
                   variants={itemVariants}
                   onClick={() => handleFilterClick("large")}
                 >
-                  대형
+                  {translations[language]?.Explore[4]}
                 </motion.li>
               </motion.ul>
             )}
@@ -130,7 +139,7 @@ export default function Explore() {
             onMouseEnter={() => toggleSubmenu("clothing")}
             onMouseLeave={() => toggleSubmenu(null)}
           >
-            옷
+            {translations[language]?.Explore[5]}
             {activeSubmenu === "clothing" && (
               <motion.ul
                 className={styles.submenu}
@@ -142,13 +151,13 @@ export default function Explore() {
                   variants={itemVariants}
                   onClick={() => handleFilterClick("top")}
                 >
-                  상의
+                  {translations[language]?.Explore[6]}
                 </motion.li>
                 <motion.li
                   variants={itemVariants}
                   onClick={() => handleFilterClick("bottom")}
                 >
-                  하의
+                  {translations[language]?.Explore[7]}
                 </motion.li>
               </motion.ul>
             )}
