@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import styles from "./Header.module.css";
 import Explore from "./Explore";
@@ -19,6 +19,10 @@ export default function Header() {
   }, []);
 
   const router = useRouter();
+  const pathname = usePathname();
+  const isExplorePage = pathname === "/explore";
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <>
@@ -50,16 +54,39 @@ export default function Header() {
           ></div>
           <Explore />
         </div>
-        <div
-          className={styles.navContainer}
-          onClick={() => router.push("/explore")}
-        >
-          <img
-            src="/icons/search.png"
-            alt="Search Icon"
-            className={styles.searchIcon}
-          />
-        </div>
+        {isExplorePage ? (
+          <div className={styles.navContainer}>
+            <img
+              src="/icons/search.png"
+              alt="Search Icon"
+              className={styles.searchIcon}
+            />
+            <input
+              type="text"
+              className={styles.searchBar}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  router.push(
+                    `/explore?name=${encodeURIComponent(searchTerm)}`
+                  );
+                }
+              }}
+            ></input>
+          </div>
+        ) : (
+          <div
+            className={styles.navContainer}
+            onClick={() => router.push("/explore")}
+          >
+            <img
+              src="/icons/search.png"
+              alt="Search Icon"
+              className={styles.searchIcon}
+            />
+          </div>
+        )}
         <Language />
         <div className={styles.loginContainer}>
           <Button

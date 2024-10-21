@@ -16,6 +16,7 @@
   justify-content: left;
   align-items: center;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .logo {
@@ -23,7 +24,6 @@
   padding: 5px;
   height: 40px;
   width: 40px;
-  cursor: pointer;
 }
 
 .name {
@@ -53,6 +53,22 @@
   width: 18px;
   height: 18px;
   margin: 0px 5px 0px 10px;
+}
+
+.searchBar {
+  flex: 1;
+  background-color: #444;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 5px;
+  color: white;
+  caret-color: #84a9a6;
+}
+
+.searchBar:focus {
+  outline: none;
 }
 
 .nav {

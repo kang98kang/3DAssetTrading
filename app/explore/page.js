@@ -1,7 +1,10 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import styles from "./explorepage.module.css";
 
 function ExploreContent() {
@@ -60,12 +63,58 @@ function ExploreContent() {
     }
   };
 
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const [data, setData] = useState([]);
+
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name") || "";
+
+  const fetchData = (requestData) => {
+    fetch("/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  useEffect(() => {
+    const requestData = {
+      name,
+      program: selectedCategory,
+      priceMin: priceRange[0],
+      priceMax: priceRange[1],
+      isAnimated,
+    };
+    fetchData(requestData);
+  }, [name, selectedCategory, isAnimated]);
+
+  const handleAfterChange = (newRange) => {
+    const requestData = {
+      name,
+      program: selectedCategory,
+      priceMin: newRange[0],
+      priceMax: newRange[1],
+      isAnimated,
+    };
+    fetchData(requestData);
+  };
+
   return (
     <div className={styles.paperback}>
       <div className={styles.divisionline}></div>
       <div className={styles.nav}>
         <motion.div
-          style={{ width: "100%", display: "flex", flexWrap: "wrap" }}
+          style={{ width: "100%", display: "flex", flexWrap: "nowrap" }}
           initial="hidden"
           animate="visible"
         >
@@ -113,6 +162,82 @@ function ExploreContent() {
             </motion.div>
           ))}
         </motion.div>
+        <div style={{ borderLeft: "2px solid white" }}>
+          <form className={styles.filterForm}>
+            <label
+              style={{ flex: "1", display: "flex", flexDirection: "column" }}
+            >
+              <div
+                style={{
+                  fontSize: "1.2rem",
+                  marginTop: "-20px",
+                }}
+              >
+                Price
+              </div>
+              <Slider
+                range
+                min={0}
+                max={1000}
+                step={10}
+                marks={{
+                  [priceRange[0]]: {
+                    style: { color: "#84a9a6", top: "-3px" },
+                    label: `${priceRange[0]}$`,
+                  },
+                  [priceRange[1]]: {
+                    style: { color: "#84a9a6", top: "-3px" },
+                    label: `${priceRange[1]}$`,
+                  },
+                  0: { style: { color: "white", top: "-37px" }, label: "0$" },
+                  1000: {
+                    style: { color: "white", top: "-37px" },
+                    label: "1000$",
+                  },
+                }}
+                value={priceRange}
+                onChange={(newRange) => setPriceRange(newRange)}
+                onAfterChange={handleAfterChange}
+                trackStyle={{ backgroundColor: "#84a9a6" }}
+                handleStyle={[
+                  { borderColor: "#84a9a6" },
+                  { borderColor: "#84a9a6" },
+                ]}
+              />
+            </label>
+            <label
+              style={{
+                width: "200px",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div style={{ fontSize: "1.2rem", marginTop: "-10px" }}>
+                Animated
+              </div>
+              <div className={styles.toggleSwitch}>
+                <input
+                  type="checkbox"
+                  checked={isAnimated}
+                  onChange={(e) => setIsAnimated(e.target.checked)}
+                  className={styles.toggleInput}
+                />
+                <span className={styles.slider}></span>
+              </div>
+            </label>
+          </form>
+        </div>
+      </div>
+      <div className={styles.gridWrapper}>
+        {data.map((item) => (
+          <div key={item.id} className={styles.gridItem}>
+            <img src={item.preview} className={styles.itemImage} />
+            <div className={styles.itemInfo}>
+              <span className={styles.itemName}>{item.file}</span>
+              <span className={styles.itemPrice}>{item.price}$</span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
