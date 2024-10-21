@@ -4,10 +4,10 @@ import { disassemble } from "es-hangul";
 
 async function connect(sql, values = []) {
   const conn = await mysql.createConnection({
-    user: `${process.env.DB_USERNAME}`,
-    password: `${process.env.DB_PASSWORD}`,
-    host: `${process.env.DB_HOST}`,
-    port: `${process.env.DB_PORT}`,
+    user: asset,
+    password: "assetpassword",
+    host: "192.168.0.90",
+    port: 3306,
     database: "asset",
     connectionLimit: 5000,
     multipleStatements: false,
