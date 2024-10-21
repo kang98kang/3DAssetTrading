@@ -4,7 +4,7 @@ import { disassemble } from "es-hangul";
 
 async function connect(sql, values = []) {
   const conn = await mysql.createConnection({
-    user: asset,
+    user: "asset",
     password: "assetpassword",
     host: "192.168.0.90",
     port: 3306,
