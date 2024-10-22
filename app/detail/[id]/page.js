@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import styles from "../detailpage.module.css";
+import { useState } from "react";
+import { useLanguageData } from "../../../components/hooks/useLanguageData"
 import Button from "@/components/common/Button";
 import Slider from "@/components/common/Slider";
+import styles from "../detailpage.module.css";
 
 const images = [
   { src: "/images/image1.jpg", alt: "Image 1" },
@@ -15,15 +15,9 @@ const images = [
 
 export default function Detail() {
   const id = 1;
-  const language = useSelector((state) => state.language.language);
-  const [translations, setTranslations] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    fetch("/language.json")
-      .then((response) => response.json())
-      .then((data) => setTranslations(data));
-  }, []);
+  const { language, translations } = useLanguageData();
 
   return (
     <div className={styles.test}>

@@ -1,19 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useLanguageData } from "../components/hooks/useLanguageData.js";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
-  const language = useSelector((state) => state.language.language);
-  const [translations, setTranslations] = useState({});
-
-  useEffect(() => {
-    fetch("/language.json")
-      .then((response) => response.json())
-      .then((data) => setTranslations(data));
-  }, []);
+  const { language, translations } = useLanguageData();
 
   return (
     <footer className={styles.footerContainer}>
