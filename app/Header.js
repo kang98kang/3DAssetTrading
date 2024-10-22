@@ -23,6 +23,11 @@ export default function Header() {
   const isExplorePage = pathname === "/explore";
 
   const [searchTerm, setSearchTerm] = useState("");
+  useEffect(() => {
+    if (!isExplorePage) {
+      setSearchTerm("");
+    }
+  }, [isExplorePage]);
 
   return (
     <>

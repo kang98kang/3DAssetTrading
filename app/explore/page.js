@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -70,6 +70,8 @@ function ExploreContent() {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "";
 
+  const router = useRouter();
+
   const fetchData = (requestData) => {
     fetch("/api/search", {
       method: "POST",
@@ -107,6 +109,10 @@ function ExploreContent() {
       isAnimated,
     };
     fetchData(requestData);
+  };
+
+  const handleCardClick = (index) => {
+    router.push(`/detail/${index}`);
   };
 
   return (
@@ -247,7 +253,11 @@ function ExploreContent() {
       </div>
       <div className={styles.gridWrapper}>
         {data.map((item) => (
-          <div key={item.id} className={styles.gridItem}>
+          <div
+            key={item.id}
+            className={styles.gridItem}
+            onClick={() => handleCardClick(item.id)}
+          >
             <img src={item.preview} className={styles.itemImage} />
             <div className={styles.itemInfo}>
               <span className={styles.itemName}>{item.file}</span>
