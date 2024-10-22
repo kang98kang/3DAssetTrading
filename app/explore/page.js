@@ -182,26 +182,43 @@ function ExploreContent() {
                 step={10}
                 marks={{
                   [priceRange[0]]: {
-                    style: { color: "#84a9a6", top: "-3px" },
+                    style: {
+                      color: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY,
+                      top: "-3px",
+                    },
                     label: `${priceRange[0]}$`,
                   },
                   [priceRange[1]]: {
-                    style: { color: "#84a9a6", top: "-3px" },
+                    style: {
+                      color: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY,
+                      top: "-3px",
+                    },
                     label: `${priceRange[1]}$`,
                   },
-                  0: { style: { color: "white", top: "-37px" }, label: "0$" },
+                  0: {
+                    style: {
+                      color: process.env.NEXT_PUBLIC_TEXT_COLOR_PRIMARY,
+                      top: "-37px",
+                    },
+                    label: "0$",
+                  },
                   1000: {
-                    style: { color: "white", top: "-37px" },
+                    style: {
+                      color: process.env.NEXT_PUBLIC_TEXT_COLOR_PRIMARY,
+                      top: "-37px",
+                    },
                     label: "1000$",
                   },
                 }}
                 value={priceRange}
                 onChange={(newRange) => setPriceRange(newRange)}
                 onAfterChange={handleAfterChange}
-                trackStyle={{ backgroundColor: "#84a9a6" }}
+                trackStyle={{
+                  backgroundColor: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY,
+                }}
                 handleStyle={[
-                  { borderColor: "#84a9a6" },
-                  { borderColor: "#84a9a6" },
+                  { borderColor: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY },
+                  { borderColor: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY },
                 ]}
               />
             </label>

@@ -8,10 +8,10 @@ import styles from "./Button.module.css";
 const Button = ({
   width,
   height,
-  backgroundColor = "blue",
+  backgroundColor = process.env.NEXT_PUBLIC_BACKGROUND_COLOR_SECONDARY,
   label,
-  onClick,
-  fontSize,
+  onClick = () => alert("Button TEST!"),
+  fontSize = "1em",
 }) => {
   const language = useSelector((state) => state.language.language);
 
@@ -22,9 +22,13 @@ const Button = ({
   return (
     <motion.button
       className={buttonClass}
-      style={{ backgroundColor, width, height }}
+      style={{ backgroundColor, width, height, fontSize }}
       onClick={onClick}
-      whileHover={{ scale: 1.1, backgroundColor: " #84a9a6 ", color: "black" }}
+      whileHover={{
+        scale: 1.1,
+        backgroundColor: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY,
+        color: process.env.NEXT_PUBLIC_TEXT_COLOR_SECONDARY,
+      }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300 }}
     >

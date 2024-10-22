@@ -6,12 +6,12 @@
   height: 100vh;
   min-height: calc(100vh - 80px);
   padding: 0 5%;
-  background-color: #808080; /* 배경색 설정 */
+  background-color: var(--background-color-primary);
 }
 
 .textSection {
   flex: 1;
-  color: white;
+  color: var(--text-color-primary);
 }
 
 .textSection h1 {

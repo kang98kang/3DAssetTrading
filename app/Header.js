@@ -90,18 +90,14 @@ export default function Header() {
         <Language />
         <div className={styles.loginContainer}>
           <Button
-            backgroundColor="#2b2b2b"
             width="70px"
             height="34px"
             label={translations[language]?.Login[0]}
-            onClick={() => alert("Login Button TEST!")}
           />
           <Button
-            backgroundColor="#2b2b2b"
             width="75px"
             height="34px"
             label={translations[language]?.Login[2]}
-            onClick={() => alert("SignIn Button TEST!")}
           />
         </div>
       </div>

@@ -54,13 +54,17 @@ export default function Detail() {
             <div className={styles.rightSection}>
               <span className={styles.price}>Price</span>
               <Button
-                backgroundColor="#3a3a3a"
+                backgroundColor={
+                  process.env.NEXT_PUBLIC_BACKGROUND_COLOR_TERTIARY
+                }
                 width="auto"
                 height="40px"
                 label={translations[language]?.Detail[0]}
               />
               <Button
-                backgroundColor="#3a3a3a"
+                backgroundColor={
+                  process.env.NEXT_PUBLIC_BACKGROUND_COLOR_TERTIARY
+                }
                 width="auto"
                 height="40px"
                 label={translations[language]?.Detail[1]}

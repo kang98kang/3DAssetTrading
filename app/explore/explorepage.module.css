@@ -1,10 +1,10 @@
 .paperback {
-  background-color: #84a9a6;
   margin-top: 80px;
   min-height: calc(100vh - 80px);
-  color: white;
+  color: var(--text-color-primary);
   font-size: 20px;
   height: auto;
+  background-color: var(--background-color-primary);
 }
 
 .divisionline {
@@ -16,7 +16,7 @@
   height: 85px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #2b2b2b;
+  background-color: var(--background-color-tertiary);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -59,7 +59,7 @@
   top: 150%;
   left: 0;
   width: 100%;
-  background-color: #2b2b2b;
+  background-color: var(--background-color-secondary);
   z-index: 10;
 }
 
@@ -71,7 +71,7 @@
 .dropdownItem {
   display: block;
   padding: 10px;
-  color: white;
+  color: var(--text-color-primary);
   text-align: center;
   cursor: pointer;
 }
@@ -115,7 +115,7 @@
   display: flex;
   justify-content: space-between;
   border-top: 2px solid rgba(0, 0, 0, 0.2);
-  color: black;
+  color: var(--text-color-secondary);
 }
 
 .filterForm {
@@ -127,7 +127,7 @@
 }
 
 .filterForm label {
-  color: white;
+  color: var(--text-color-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -171,7 +171,7 @@
 }
 
 input:checked + .slider {
-  background-color: #84a9a6;
+  background-color: var(--accent-color-primary);
 }
 
 input:checked + .slider:before {

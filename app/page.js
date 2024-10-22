@@ -41,7 +41,6 @@ export default function Home() {
           <p>{translations[language]?.Main[1]}</p>
           <div className={styles.buttonGroup}>
             <Button
-              backgroundColor="#2b2b2b"
               width="auto"
               height="34px"
               label="Go to explorepage"
@@ -49,7 +48,6 @@ export default function Home() {
             />
 
             <Button
-              backgroundColor="#2b2b2b"
               width="auto"
               height="34px"
               label="Go to detailpage"
