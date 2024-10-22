@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import styles from "./Header.module.css";
+import styles from "../app/Header.module.css";
 
 const dropdownVariants = {
   hidden: {
@@ -77,7 +77,9 @@ export default function Explore() {
   };
 
   const handleFilterClick = (filter) => {
-    router.push(`/explore?filter=${filter}`);
+    if (filter) {
+      router.push(`/explore?filter=${filter}`);
+    } else router.push("/explore");
   };
 
   return (
@@ -96,16 +98,23 @@ export default function Explore() {
         <motion.ul>
           <motion.li
             variants={itemVariants}
-            onClick={() => handleFilterClick("hair")}
+            onClick={() => handleFilterClick()}
           >
             {translations[language]?.Explore[0]}
           </motion.li>
           <motion.li
             variants={itemVariants}
-            onMouseEnter={() => toggleSubmenu("vehicle")}
-            onMouseLeave={() => toggleSubmenu(null)}
+            onClick={() => handleFilterClick("hair")}
           >
             {translations[language]?.Explore[1]}
+          </motion.li>
+          <motion.li
+            variants={itemVariants}
+            onMouseEnter={() => toggleSubmenu("vehicle")}
+            onMouseLeave={() => toggleSubmenu(null)}
+            onClick={() => handleFilterClick("vehicle")}
+          >
+            {translations[language]?.Explore[2]}
             {activeSubmenu === "vehicle" && (
               <motion.ul
                 className={styles.submenu}
@@ -115,21 +124,30 @@ export default function Explore() {
               >
                 <motion.li
                   variants={itemVariants}
-                  onClick={() => handleFilterClick("compact")}
-                >
-                  {translations[language]?.Explore[2]}
-                </motion.li>
-                <motion.li
-                  variants={itemVariants}
-                  onClick={() => handleFilterClick("mid-size")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFilterClick("compact");
+                  }}
                 >
                   {translations[language]?.Explore[3]}
                 </motion.li>
                 <motion.li
                   variants={itemVariants}
-                  onClick={() => handleFilterClick("large")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFilterClick("mid-size");
+                  }}
                 >
                   {translations[language]?.Explore[4]}
+                </motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFilterClick("large");
+                  }}
+                >
+                  {translations[language]?.Explore[5]}
                 </motion.li>
               </motion.ul>
             )}
@@ -138,8 +156,9 @@ export default function Explore() {
             variants={itemVariants}
             onMouseEnter={() => toggleSubmenu("clothing")}
             onMouseLeave={() => toggleSubmenu(null)}
+            onClick={() => handleFilterClick("clothing")}
           >
-            {translations[language]?.Explore[5]}
+            {translations[language]?.Explore[6]}
             {activeSubmenu === "clothing" && (
               <motion.ul
                 className={styles.submenu}
@@ -149,15 +168,21 @@ export default function Explore() {
               >
                 <motion.li
                   variants={itemVariants}
-                  onClick={() => handleFilterClick("top")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFilterClick("top");
+                  }}
                 >
-                  {translations[language]?.Explore[6]}
+                  {translations[language]?.Explore[7]}
                 </motion.li>
                 <motion.li
                   variants={itemVariants}
-                  onClick={() => handleFilterClick("bottom")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFilterClick("bottom");
+                  }}
                 >
-                  {translations[language]?.Explore[7]}
+                  {translations[language]?.Explore[8]}
                 </motion.li>
               </motion.ul>
             )}

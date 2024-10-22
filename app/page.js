@@ -43,14 +43,14 @@ export default function Home() {
             <Button
               width="auto"
               height="34px"
-              label="Go to explorepage"
+              label={translations[language]?.Main[2]}
               onClick={() => handleRoute("explore")}
             />
 
             <Button
               width="auto"
               height="34px"
-              label="Go to detailpage"
+              label={translations[language]?.Main[3]}
               onClick={() => handleRoute("detail")}
             />
           </div>
