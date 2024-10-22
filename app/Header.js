@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import styles from "./Header.module.css";
-import Explore from "./Explore";
+import Explore from "../components/Explore";
 import Language from "./Language";
 import Button from "../components/common/Button";
 
@@ -28,6 +28,8 @@ export default function Header() {
       setSearchTerm("");
     }
   }, [isExplorePage]);
+
+  const searchParams = useSearchParams();
 
   return (
     <>
@@ -73,9 +75,13 @@ export default function Header() {
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  router.push(
-                    `/explore?name=${encodeURIComponent(searchTerm)}`
-                  );
+                  let path = `/explore?name=${encodeURIComponent(searchTerm)}`;
+                  if (searchParams.get("filter")) {
+                    path = `/explore?filter=${searchParams.get(
+                      "filter"
+                    )}&name=${encodeURIComponent(searchTerm)}`;
+                  }
+                  router.push(path);
                 }
               }}
             ></input>

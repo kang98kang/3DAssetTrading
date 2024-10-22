@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
@@ -69,6 +70,7 @@ function ExploreContent() {
 
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "";
+  const filter = searchParams.get("filter") || "";
 
   const router = useRouter();
 
@@ -114,6 +116,15 @@ function ExploreContent() {
   const handleCardClick = (index) => {
     router.push(`/detail/${index}`);
   };
+
+  const language = useSelector((state) => state.language.language);
+  const [translations, setTranslations] = useState({});
+
+  useEffect(() => {
+    fetch("/language.json")
+      .then((response) => response.json())
+      .then((data) => setTranslations(data));
+  }, []);
 
   return (
     <div className={styles.paperback}>
@@ -250,6 +261,9 @@ function ExploreContent() {
             </label>
           </form>
         </div>
+      </div>
+      <div style={{ margin: "50px 70px", fontSize: "1.5em" }}>
+        {filter ? filter : "3D 모델"}
       </div>
       <div className={styles.gridWrapper}>
         {data.map((item) => (
