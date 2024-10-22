@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #808080;
+  background-color: var(--background-color-primary);
   position: relative;
 }
 
@@ -75,7 +75,7 @@
 .prevButton:hover,
 .nextButton:hover {
   background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid #84a9a6;
+  border: 2px solid var(--accent-color-primary);
 }
 
 .thumbnailContainer {
@@ -87,7 +87,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #808080;
+  background-color: var(--background-color-primary);
   flex-wrap: wrap;
   align-items: center;
 }

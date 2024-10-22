@@ -4,7 +4,7 @@
   height: 80px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #2b2b2b;
+  background-color: var(--background-color-secondary);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,7 +45,7 @@
 }
 
 .navContainer:hover {
-  outline: 2px solid #84a9a6;
+  outline: 2px solid var(--accent-color-primary);
   filter: grayscale(0%);
 }
 
@@ -63,8 +63,8 @@
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   padding: 5px;
-  color: white;
-  caret-color: #84a9a6;
+  color: var(--text-color-primary);
+  caret-color: var(--accent-color-primary);
 }
 
 .searchBar:focus {
@@ -98,7 +98,7 @@
   margin: 15px;
   padding: 5px;
   width: 100px;
-  color: white;
+  color: var(--text-color-primary);
   cursor: pointer;
   text-align: center;
   position: relative;
@@ -143,7 +143,7 @@
   padding: 12px 15px;
   text-align: left;
   cursor: pointer;
-  color: white;
+  color: var(--text-color-primary);
   transition: background-color 0.2s ease;
   border-radius: 8px;
 }
