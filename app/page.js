@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import styles from "./mainpage.module.css";
+import { useLanguageData } from "../components/hooks/useLanguageData.js";
 import Button from "../components/common/Button";
 
 const EyeModel = dynamic(() => import("../components/Models/Eye"), {
@@ -18,14 +17,7 @@ export default function Home() {
     router.push(`/${route}`);
   };
 
-  const language = useSelector((state) => state.language.language);
-  const [translations, setTranslations] = useState({});
-
-  useEffect(() => {
-    fetch("/language.json")
-      .then((response) => response.json())
-      .then((data) => setTranslations(data));
-  }, []);
+  const { language, translations } = useLanguageData();
 
   return (
     <motion.div
@@ -55,7 +47,6 @@ export default function Home() {
             />
           </div>
         </div>
-
         <div className={styles.modelSection}>
           <EyeModel />
         </div>

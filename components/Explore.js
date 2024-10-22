@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useLanguageData } from "./hooks/useLanguageData"
 import styles from "../app/Header.module.css";
 
 const dropdownVariants = {
@@ -57,14 +57,8 @@ const submenuVariants = {
 export default function Explore() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const language = useSelector((state) => state.language.language);
-  const [translations, setTranslations] = useState({});
 
-  useEffect(() => {
-    fetch("/language.json")
-      .then((response) => response.json())
-      .then((data) => setTranslations(data));
-  }, []);
+  const { language, translations } = useLanguageData();
 
   const router = useRouter();
 

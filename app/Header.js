@@ -2,21 +2,14 @@
 
 import { Suspense, useState, useEffect } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useSelector } from "react-redux";
-import styles from "./Header.module.css";
+import { useLanguageData } from "../components/hooks/useLanguageData.js";
+import Button from "../components/common/Button";
 import Explore from "../components/Explore";
 import Language from "./Language";
-import Button from "../components/common/Button";
+import styles from "./Header.module.css";
 
 function HeaderContent() {
-  const language = useSelector((state) => state.language.language);
-  const [translations, setTranslations] = useState({});
-
-  useEffect(() => {
-    fetch("/language.json")
-      .then((response) => response.json())
-      .then((data) => setTranslations(data));
-  }, []);
+  const { language, translations } = useLanguageData();
 
   const router = useRouter();
   const pathname = usePathname();

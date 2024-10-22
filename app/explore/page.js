@@ -1,10 +1,10 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
+import { useLanguageData } from "../../components/hooks/useLanguageData";
 import "rc-slider/assets/index.css";
 import styles from "./explorepage.module.css";
 
@@ -117,14 +117,22 @@ function ExploreContent() {
     router.push(`/detail/${index}`);
   };
 
-  const language = useSelector((state) => state.language.language);
-  const [translations, setTranslations] = useState({});
+  const { language, translations } = useLanguageData();
 
-  useEffect(() => {
-    fetch("/language.json")
-      .then((response) => response.json())
-      .then((data) => setTranslations(data));
-  }, []);
+  const getTranslatedFilter = (filter, translations, language) => {
+    if (!filter) return translations[language]?.Explore[0];
+
+    const lowercaseFilter = filter.toLowerCase();
+    const enExploreLowercase = translations["en"]?.Explore.map((item) =>
+      item.toLowerCase()
+    );
+
+    const filterIndex = enExploreLowercase.indexOf(lowercaseFilter);
+
+    return filterIndex !== -1
+      ? translations[language]?.Explore[filterIndex]
+      : translations[language]?.Explore[0];
+  };
 
   return (
     <div className={styles.paperback}>
@@ -263,7 +271,7 @@ function ExploreContent() {
         </div>
       </div>
       <div style={{ margin: "50px 70px", fontSize: "1.5em" }}>
-        {filter ? filter : "3D 모델"}
+        {getTranslatedFilter(filter, translations, language)}
       </div>
       <div className={styles.gridWrapper}>
         {data.map((item) => (
