@@ -13,10 +13,6 @@ const EyeModel = dynamic(() => import("../components/Models/Eye"), {
 });
 
 export default function Home() {
-  console.log(
-    "Background Color Primary:",
-    process.env.NEXT_PUBLIC_BACKGROUND_COLOR_PRIMARY
-  );
   const router = useRouter();
   const handleRoute = (route) => {
     router.push(`/${route}`);
