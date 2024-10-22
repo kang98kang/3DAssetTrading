@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 3DAssetTrading
 
-## Getting Started
+> 3D 모델 애셋 서비스
 
-First, run the development server:
+[바로가기](https://asset.monsteratech.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 프로젝트 개요
+
+### 1. 프로젝트 주제
+
+### 2. 메인/서브 기능
+
+### 3. 프로젝트 팀원
+
+| 이름   | 역할      |
+| ------ | --------- |
+| 신동한 | PM / 개발 |
+| 강준영 | 개발      |
+| 정혜주 | 개발      |
+
+## 프로젝트 구조
+
+### 아키텍처
+
+### 디렉토리 구조
+
+```
+3DASSETTRADING
+┣ .next
+┣ app
+┃ ┣ api
+┃ ┃ ┗ search
+┃ ┃   ┗ route.js
+┃ ┣ detail
+┃ ┃ ┣ [id]
+┃ ┃ ┃ ┗ page.js
+┃ ┃ ┣ detailpage.module.css
+┃ ┃ ┗ page.js
+┃ ┣ explore
+┃ ┃ ┣ explorepage.module.css
+┃ ┃ ┗ page.js
+┃ ┣ fonts
+┃ ┃ ┣ GeistMonoVF.woff
+┃ ┃ ┗ GeistVF.woff
+┃ ┣ store
+┃ ┃ ┣ index.js
+┃ ┃ ┗ languageSlice.js
+┃ ┣ Explore.js
+┃ ┣ favicon.ico
+┃ ┣ Footer.js
+┃ ┣ Footer.module.css
+┃ ┣ globals.css
+┃ ┣ Header.js
+┃ ┣ Header.module.css
+┃ ┣ Language.js
+┃ ┣ layout.js
+┃ ┣ mainpage.module.css
+┃ ┗ page.js
+┣ components
+┃ ┣ common
+┃ ┃ ┣ Button.js
+┃ ┃ ┣ Button.module.css
+┃ ┃ ┣ Slider.js
+┃ ┃ ┗ Slider.module.css
+┃ ┣ Models
+┃ ┃ ┗ Eye.js
+┃ ┣ ClientProvider.js
+┃ ┗ ThreeModel.js
+┣ public
+┣ node_modules
+┣ .env
+┣ .eslintrc.json
+┣ .gitattributes
+┣ .gitignore
+┣ jsconfig.json
+┣ next.config.mjs
+┣ package-lock.json
+┣ package.json
+┣ postcss.config.mjs
+┣ README.md
+┗ tailwind.config.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 프로젝트 환경
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 1. 기술 스택
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 프레임워크 및 라이브러리
+  - `Next.js`
+  - `Framer Motion` : 애니메이션 라이브러리
+- 스타일링
+  - `Tailwind CSS` : 유틸리티 기반의 CSS 프레임워크
+- 빌드 및 개발 도구
+  - `npm` : 패키지 관리 도구, 의존성 설치 및 스크립트 실행을 관리
 
-## Learn More
+### 2. 개발 환경
 
-To learn more about Next.js, take a look at the following resources:
+```
+- Node.js : v20.18.0
+- npm
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. 배포 환경
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 개발 문서
 
-## Deploy on Vercel
+[WBS](https://docs.google.com/spreadsheets/d/1VKXxkeZoJzUnt8dinMVFNMZtRECBctodlVXIybQFLIg/edit?gid=1119871053#gid=1119871053)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 개발 규칙
