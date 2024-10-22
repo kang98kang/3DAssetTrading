@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import styles from "./Header.module.css";
@@ -8,7 +8,7 @@ import Explore from "../components/Explore";
 import Language from "./Language";
 import Button from "../components/common/Button";
 
-export default function Header() {
+function HeaderContent() {
   const language = useSelector((state) => state.language.language);
   const [translations, setTranslations] = useState({});
 
@@ -113,5 +113,13 @@ export default function Header() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function Header() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HeaderContent />
+    </Suspense>
   );
 }
