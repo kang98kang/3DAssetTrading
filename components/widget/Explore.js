@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { useLanguageData } from "./hooks/useLanguageData"
-import styles from "../app/Header.module.css";
+import { useLanguageData } from "../hook/useLanguageData";
+import styles from "../../app/Header.module.css";
 
 const dropdownVariants = {
   hidden: {

@@ -2,10 +2,10 @@
 
 import { Suspense, useState, useEffect } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useLanguageData } from "../components/hooks/useLanguageData.js";
+import { useLanguageData } from "../components/hook/useLanguageData.js";
 import Button from "../components/common/Button";
-import Explore from "../components/Explore";
-import Language from "./Language";
+import Explore from "../components/widget/Explore.js";
+import Language from "../components/widget/Language.js";
 import styles from "./Header.module.css";
 
 function HeaderContent() {

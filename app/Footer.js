@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguageData } from "../components/hooks/useLanguageData.js";
+import { useLanguageData } from "../components/hook/useLanguageData.js";
 import styles from "./Footer.module.css";
 
 export default function Footer() {

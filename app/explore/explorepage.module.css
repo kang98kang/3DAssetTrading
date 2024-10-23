@@ -94,28 +94,63 @@
   position: relative;
   background-color: rgba(0, 0, 0, 0.2);
   color: rgba(255, 255, 255, 0.4);
-  padding: 0.46vh 0.52vw;
   border-radius: 0.46vh;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.gridItem:nth-child(n):hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+  /* outline: 3px solid var(--accent-color-primary); */
+}
+
+.gridItem:hover .hoverContainer {
+  display: flex;
+}
+
+.hoverContainer {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: auto;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--text-color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.hoverContainer .extensionItem {
+  margin: 2px 0;
+  padding: 2px 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
 }
 
 .itemImage {
   width: 100%;
-  height: auto;
-}
-
-.itemPrice {
-  color: rgba(0, 0, 0, 0.8);
+  height: 85%;
+  object-fit: cover;
+  border-top-left-radius: 0.46vh;
+  border-top-right-radius: 0.46vh;
 }
 
 .itemInfo {
   position: absolute;
+  height: 10%;
   bottom: 10px;
   left: 10px;
   right: 10px;
   display: flex;
   justify-content: space-between;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
-  color: var(--text-color-secondary);
+  align-items: center;
+  color: var(--text-color-primary);
+  text-decoration-line: underline;
+  text-underline-offset: 7px;
 }
 
 .filterForm {

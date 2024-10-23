@@ -45,14 +45,12 @@
 ┃ ┣ store
 ┃ ┃ ┣ index.js
 ┃ ┃ ┗ languageSlice.js
-┃ ┣ Explore.js
 ┃ ┣ favicon.ico
 ┃ ┣ Footer.js
 ┃ ┣ Footer.module.css
 ┃ ┣ globals.css
 ┃ ┣ Header.js
 ┃ ┣ Header.module.css
-┃ ┣ Language.js
 ┃ ┣ layout.js
 ┃ ┣ mainpage.module.css
 ┃ ┗ page.js
@@ -62,8 +60,12 @@
 ┃ ┃ ┣ Button.module.css
 ┃ ┃ ┣ Slider.js
 ┃ ┃ ┗ Slider.module.css
-┃ ┣ Models
-┃ ┃ ┗ Eye.js
+┃ ┣ hook
+┃ ┃ ┗ useLanguageData.js
+┃ ┣ widget
+┃ ┃ ┣ Explore.js
+┃ ┃ ┣ Eye.js
+┃ ┃ ┗ Language.js
 ┃ ┣ ClientProvider.js
 ┃ ┗ ThreeModel.js
 ┣ public

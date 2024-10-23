@@ -3,11 +3,11 @@
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import styles from "./mainpage.module.css";
-import { useLanguageData } from "../components/hooks/useLanguageData.js";
+import { useLanguageData } from "../components/hook/useLanguageData.js";
 import Button from "../components/common/Button";
+import styles from "./mainpage.module.css";
 
-const EyeModel = dynamic(() => import("../components/Models/Eye"), {
+const EyeModel = dynamic(() => import("../components/widget/Eye.js"), {
   ssr: false,
 });
 
