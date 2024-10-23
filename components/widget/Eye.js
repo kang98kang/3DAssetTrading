@@ -1,8 +1,8 @@
+import { useRef } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { OBJLoader } from "three-stdlib";
 import { MTLLoader } from "three-stdlib";
-import { useRef } from "react";
 
 const EyeModel = () => {
   // MTL 파일을 먼저 로드
@@ -22,7 +22,7 @@ const EyeModel = () => {
       {/*color 빛 색깔 조정, intensity 빛 강도*/}
       <pointLight position={[10, 10, 10]} />
       <primitive object={obj} ref={ref} scale={0.5} /> {/* OBJ 모델 렌더링 */}
-      <OrbitControls /> {/* OrbitControls 설정 */}
+      <OrbitControls minDistance={2} maxDistance={10} /> {/* 카메라 줌 설정 */}
     </Canvas>
   );
 };

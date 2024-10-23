@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLanguageData } from "../../components/hooks/useLanguageData"
+import { useLanguageData } from "../../components/hook/useLanguageData";
 import Button from "@/components/common/Button";
 import Slider from "@/components/common/Slider";
 import styles from "./detailpage.module.css";

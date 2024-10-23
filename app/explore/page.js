@@ -4,7 +4,7 @@ import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
-import { useLanguageData } from "../../components/hooks/useLanguageData";
+import { useLanguageData } from "../../components/hook/useLanguageData";
 import "rc-slider/assets/index.css";
 import styles from "./explorepage.module.css";
 
@@ -132,6 +132,16 @@ function ExploreContent() {
     return filterIndex !== -1
       ? translations[language]?.Explore[filterIndex]
       : translations[language]?.Explore[0];
+  };
+
+  const [hoveredItemId, setHoveredItemId] = useState(null);
+
+  const handleMouseEnter = (id) => {
+    setHoveredItemId(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredItemId(null);
   };
 
   return (
@@ -271,7 +281,11 @@ function ExploreContent() {
         </div>
       </div>
       <div style={{ margin: "50px 70px", fontSize: "1.5em" }}>
-        {getTranslatedFilter(filter, translations, language)}
+        {translations[language] && translations["en"]?.Explore ? (
+          <div>{getTranslatedFilter(filter, translations, language)}</div>
+        ) : (
+          <div></div>
+        )}
       </div>
       <div className={styles.gridWrapper}>
         {data.map((item) => (
@@ -279,12 +293,23 @@ function ExploreContent() {
             key={item.id}
             className={styles.gridItem}
             onClick={() => handleCardClick(item.id)}
+            onMouseEnter={() => handleMouseEnter(item.id)}
+            onMouseLeave={handleMouseLeave}
           >
-            <img src={item.preview} className={styles.itemImage} />
+            <img src={item.preview[0]} className={styles.itemImage} />
             <div className={styles.itemInfo}>
-              <span className={styles.itemName}>{item.file}</span>
+              <span className={styles.itemName}>{item.name}</span>
               <span className={styles.itemPrice}>{item.price}$</span>
             </div>
+            {hoveredItemId === item.id && (
+              <div className={styles.hoverContainer}>
+                {item.extension.map((ext, index) => (
+                  <div key={index} className={styles.extensionItem}>
+                    {ext}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

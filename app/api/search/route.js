@@ -26,17 +26,15 @@ export async function POST(request) {
     const reqBody = await request.json();
     let { name, program, priceMin, priceMax, isAnimated } = reqBody;
 
-    // Disassemble the name if provided
     if (name) {
       name = disassemble(name);
     }
 
-    // Construct the SQL query dynamically
-    let sql = `SELECT a.id, a.extension, a.price, a.file FROM asset a WHERE 1=1`;
+    let sql = `SELECT a.id, a.name, a.preview, a.extension, a.price FROM asset a WHERE 1=1`;
     let params = [];
 
     if (name) {
-      sql += ` AND a.file LIKE ?`;
+      sql += ` AND a.name_disassemble LIKE ?`;
       params.push(`%${name}%`);
     }
 

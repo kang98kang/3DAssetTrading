@@ -1,9 +1,10 @@
 "use client";
-import { useDispatch, useSelector } from "react-redux";
-import { setLanguage } from "./store/languageSlice";
+
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import styles from "./Header.module.css";
+import { setLanguage } from "../../app/store/languageSlice";
+import styles from "../../app/Header.module.css";
 
 const dropdownVariants = {
   hidden: {
