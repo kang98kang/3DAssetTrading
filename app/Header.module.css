@@ -30,6 +30,20 @@
   width: 80px !important ;
 }
 
+.backgroundImageLogo {
+  background-image: url("/images/logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.backgroundImageName {
+  background-image: url("/images/name.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .navContainer {
   background-color: #444;
   flex: 1;

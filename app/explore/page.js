@@ -5,11 +5,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
 import { useLanguageData } from "../../components/hook/useLanguageData";
+import { useFetchData } from "../../components/hook/useFetchData";
 import "rc-slider/assets/index.css";
 import styles from "./explorepage.module.css";
 
 function ExploreContent() {
-  const category = [
+  // 모델 필터 선택 효과 및 애니메이션
+  const modelFilter = [
     "Autodesk-FBX",
     "3ds-Max",
     "Blender",
@@ -26,29 +28,31 @@ function ExploreContent() {
     "Polygon-File-Format",
   ];
 
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [unselectedCategory, setUnselectedCategory] = useState([...category]);
+  const [selectedModelFilter, setSelectedModelFilter] = useState([]);
+  const [unselectedModelFilter, setUnselectedModelFilter] = useState([
+    ...modelFilter,
+  ]);
 
-  const handleSelectFilter = (filterName) => {
-    setSelectedCategory((prev) => [...prev, filterName]);
-    setUnselectedCategory((prev) =>
+  const handleSelectModelFilter = (filterName) => {
+    setSelectedModelFilter((prev) => [...prev, filterName]);
+    setUnselectedModelFilter((prev) =>
       prev.filter((filter) => filter !== filterName)
     );
   };
 
-  const handleDeselectFilter = (filterName) => {
-    setSelectedCategory((prev) =>
+  const handleDeselectModelFilter = (filterName) => {
+    setSelectedModelFilter((prev) =>
       prev.filter((filter) => filter !== filterName)
     );
-    setUnselectedCategory((prev) => {
-      const updatedCategory = [...prev, filterName];
-      return updatedCategory.sort(
-        (a, b) => category.indexOf(a) - category.indexOf(b)
+    setUnselectedModelFilter((prev) => {
+      const updatedModelFilter = [...prev, filterName];
+      return updatedModelFilter.sort(
+        (a, b) => modelFilter.indexOf(a) - modelFilter.indexOf(b)
       );
     });
   };
 
-  const getItemVariants = (filterName, isSelected) => {
+  const getModelFilterItemVariants = (filterName, isSelected) => {
     if (isSelected) {
       return {
         hidden: { opacity: 0, scale: 0.8 },
@@ -64,76 +68,66 @@ function ExploreContent() {
     }
   };
 
-  const [priceRange, setPriceRange] = useState([0, 1000]);
-  const [isAnimated, setIsAnimated] = useState(false);
-  const [data, setData] = useState([]);
-
+  // URL에서 쿼리 파라미터 추출 후 라우팅
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "";
-  const filter = searchParams.get("filter") || "";
+  const category = searchParams.get("category") || "";
 
   const router = useRouter();
-
-  const fetchData = (requestData) => {
-    fetch("/api/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  useEffect(() => {
-    const requestData = {
-      name,
-      program: selectedCategory,
-      priceMin: priceRange[0],
-      priceMax: priceRange[1],
-      isAnimated,
-    };
-    fetchData(requestData);
-  }, [name, selectedCategory, isAnimated]);
-
-  const handleAfterChange = (newRange) => {
-    const requestData = {
-      name,
-      program: selectedCategory,
-      priceMin: newRange[0],
-      priceMax: newRange[1],
-      isAnimated,
-    };
-    fetchData(requestData);
-  };
 
   const handleCardClick = (index) => {
     router.push(`/detail/${index}`);
   };
 
+  // 탐색 데이터 API
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const { data, setRequestData } = useFetchData({
+    name,
+    program: selectedModelFilter,
+    priceMin: priceRange[0],
+    priceMax: priceRange[1],
+    isAnimated,
+  });
+
+  useEffect(() => {
+    setRequestData({
+      name,
+      program: selectedModelFilter,
+      priceMin: priceRange[0],
+      priceMax: priceRange[1],
+      isAnimated,
+    });
+  }, [name, selectedModelFilter, isAnimated]);
+
+  const handleAfterChange = (newRange) => {
+    setPriceRange(newRange);
+    setRequestData((prevRequestData) => ({
+      ...prevRequestData,
+      priceMin: newRange[0],
+      priceMax: newRange[1],
+    }));
+  };
+
+  // 카테고리 언어 변경
   const { language, translations } = useLanguageData();
 
-  const getTranslatedFilter = (filter, translations, language) => {
-    if (!filter) return translations[language]?.Explore[0];
+  const getTranslatedCategory = (category, translations, language) => {
+    if (!category) return translations[language]?.Explore[0];
 
-    const lowercaseFilter = filter.toLowerCase();
+    const lowercaseCategory = category.toLowerCase();
     const enExploreLowercase = translations["en"]?.Explore.map((item) =>
       item.toLowerCase()
     );
 
-    const filterIndex = enExploreLowercase.indexOf(lowercaseFilter);
+    const categoryIndex = enExploreLowercase.indexOf(lowercaseCategory);
 
-    return filterIndex !== -1
-      ? translations[language]?.Explore[filterIndex]
+    return categoryIndex !== -1
+      ? translations[language]?.Explore[categoryIndex]
       : translations[language]?.Explore[0];
   };
 
+  // 카드 호버 효과
   const [hoveredItemId, setHoveredItemId] = useState(null);
 
   const handleMouseEnter = (id) => {
@@ -149,17 +143,17 @@ function ExploreContent() {
       <div className={styles.divisionline}></div>
       <div className={styles.nav}>
         <motion.div
-          style={{ width: "100%", display: "flex", flexWrap: "nowrap" }}
+          className={styles.flexContainer}
           initial="hidden"
           animate="visible"
         >
-          {selectedCategory.map((filterName) => (
+          {selectedModelFilter.map((filterName) => (
             <motion.div
               key={filterName}
               className={styles.inner}
-              onClick={() => handleDeselectFilter(filterName)}
+              onClick={() => handleDeselectModelFilter(filterName)}
               layout="position"
-              variants={getItemVariants(filterName, true)}
+              variants={getModelFilterItemVariants(filterName, true)}
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -174,14 +168,13 @@ function ExploreContent() {
               ></div>
             </motion.div>
           ))}
-
-          {unselectedCategory.map((filterName) => (
+          {unselectedModelFilter.map((filterName) => (
             <motion.div
               key={filterName}
               className={styles.inner}
-              onClick={() => handleSelectFilter(filterName)}
+              onClick={() => handleSelectModelFilter(filterName)}
               layout="position"
-              variants={getItemVariants(filterName, false)}
+              variants={getModelFilterItemVariants(filterName, false)}
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -197,19 +190,10 @@ function ExploreContent() {
             </motion.div>
           ))}
         </motion.div>
-        <div style={{ borderLeft: "2px solid white" }}>
-          <form className={styles.filterForm}>
-            <label
-              style={{ flex: "1", display: "flex", flexDirection: "column" }}
-            >
-              <div
-                style={{
-                  fontSize: "1.2rem",
-                  marginTop: "-15px",
-                }}
-              >
-                Price
-              </div>
+        <div className={styles.divider}>
+          <form className={styles.sliderForm}>
+            <label className={styles.label}>
+              <div className={styles.priceLabel}>Price</div>
               <Slider
                 range
                 min={0}
@@ -257,16 +241,8 @@ function ExploreContent() {
                 ]}
               />
             </label>
-            <label
-              style={{
-                width: "200px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <div style={{ fontSize: "1.2rem", marginTop: "-10px" }}>
-                Animated
-              </div>
+            <label className={styles.labelColumn}>
+              <div className={styles.animatedLabel}>Animated</div>
               <div className={styles.toggleSwitch}>
                 <input
                   type="checkbox"
@@ -282,7 +258,7 @@ function ExploreContent() {
       </div>
       <div style={{ margin: "50px 70px", fontSize: "1.5em" }}>
         {translations[language] && translations["en"]?.Explore ? (
-          <div>{getTranslatedFilter(filter, translations, language)}</div>
+          <div>{getTranslatedCategory(category, translations, language)}</div>
         ) : (
           <div></div>
         )}

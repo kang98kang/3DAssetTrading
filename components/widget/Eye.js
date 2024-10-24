@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { OBJLoader } from "three-stdlib";
-import { MTLLoader } from "three-stdlib";
+import { OBJLoader, MTLLoader } from "three-stdlib";
 
 const EyeModel = () => {
   // MTL 파일을 먼저 로드

@@ -29,25 +29,13 @@ function HeaderContent() {
       <div className={styles.header}>
         <div className={styles.logoContainer}>
           <div
-            className={styles.logo}
-            style={{
-              backgroundImage: "url(/images/logo.png)",
-              backgroundPosition: "center",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
+            className={`${styles.logo} ${styles.backgroundImageLogo}`}
             onClick={() => {
               router.push("/");
             }}
           ></div>
           <div
-            className={`${styles.logo} ${styles.name}`}
-            style={{
-              backgroundImage: "url(/images/name.png)",
-              backgroundPosition: "center",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
+            className={`${styles.logo} ${styles.name} ${styles.backgroundImageName}`}
             onClick={() => {
               router.push("/");
             }}
@@ -69,9 +57,9 @@ function HeaderContent() {
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   let path = `/explore?name=${encodeURIComponent(searchTerm)}`;
-                  if (searchParams.get("filter")) {
-                    path = `/explore?filter=${searchParams.get(
-                      "filter"
+                  if (searchParams.get("category")) {
+                    path = `/explore?category=${searchParams.get(
+                      "category"
                     )}&name=${encodeURIComponent(searchTerm)}`;
                   }
                   router.push(path);
