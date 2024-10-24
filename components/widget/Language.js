@@ -2,48 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
 import { setLanguage } from "../../app/store/languageSlice";
-import styles from "../../app/Header.module.css";
-
-const dropdownVariants = {
-  hidden: {
-    scale: 0,
-    opacity: 0,
-    transition: {
-      delay: 0.05,
-    },
-  },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 0.4,
-      delayChildren: 0.2,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { x: -10, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { opacity: { duration: 0.1 } },
-  },
-};
+import Dropdown from "../common/Dropdown";
 
 export default function Language() {
+  // 언어 설정
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
   const [translations, setTranslations] = useState({});
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownVisible(!isDropdownVisible);
-  };
 
   useEffect(() => {
     fetch("/language.json")
@@ -55,34 +21,19 @@ export default function Language() {
     dispatch(setLanguage(lang));
   };
 
+  // 드롭다운
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+  const dropdownItems = [
+    { label: "한국어", value: "ko" },
+    { label: "English", value: "en" },
+  ];
+
   return (
-    <div
-      className={styles.explore}
-      onMouseEnter={toggleDropdown}
-      onMouseLeave={toggleDropdown}
-    >
-      {language}
-      <motion.div
-        className={styles.dropdown}
-        initial="hidden"
-        animate={isDropdownVisible ? "visible" : "hidden"}
-        variants={dropdownVariants}
-      >
-        <motion.ul>
-          <motion.li
-            variants={itemVariants}
-            onClick={() => handleLanguageChange("ko")}
-          >
-            한국어
-          </motion.li>
-          <motion.li
-            variants={itemVariants}
-            onClick={() => handleLanguageChange("en")}
-          >
-            English
-          </motion.li>
-        </motion.ul>
-      </motion.div>
-    </div>
+    <Dropdown
+      title={language}
+      items={dropdownItems}
+      onItemClick={handleLanguageChange}
+    />
   );
 }
