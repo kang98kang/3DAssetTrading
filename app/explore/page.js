@@ -205,7 +205,7 @@ function ExploreContent() {
               <div
                 style={{
                   fontSize: "1.2rem",
-                  marginTop: "-20px",
+                  marginTop: "-15px",
                 }}
               >
                 Price
