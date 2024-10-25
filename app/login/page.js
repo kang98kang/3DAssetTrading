@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { useLanguageData } from "../../components/hook/useLanguageData";
 import Image from "next/image";
 import styles from "./loginpage.module.css";
@@ -13,20 +14,18 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
+  const handleSignIn = () => {
+    signIn("discord");
+  };
+
   const { language, translations } = useLanguageData();
   return (
     <div className={styles.mainContainer}>
       <section className={styles.section}>
         <div className={styles.wrapper}>
           <h1 className={styles.title}>{translations[language]?.Login[0]}</h1>
-          {/* <Image
-            src="/icons/discord.png"
-            alt="Discord"
-            className={styles.icon}
-            width={5}
-            height={5}
-          /> */}
           <Button
+            onClick={handleSignIn}
             width="360px"
             height="42px"
             label={translations[language]?.Login[3]}

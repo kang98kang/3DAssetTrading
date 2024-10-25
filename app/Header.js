@@ -24,6 +24,12 @@ function HeaderContent() {
 
   const searchParams = useSearchParams();
 
+  const pageVariants = {
+    initial: { opacity: 0, y: -20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 20 },
+  };
+
   return (
     <>
       <div className={styles.header}>
@@ -82,6 +88,9 @@ function HeaderContent() {
         <Language />
         <div className={styles.loginContainer}>
           <Button
+            onClick={() => {
+              router.push("/login");
+            }}
             width="70px"
             height="34px"
             label={translations[language]?.Login[0]}
