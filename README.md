@@ -29,13 +29,13 @@
 ┣ .next
 ┣ app
 ┃ ┣ api
-┃ ┃ ┗ search
-┃ ┃   ┗ route.js
+┃ ┃ ┣ search
+┃ ┃ ┃ ┗ route.js
+┃ ┃ ┗ route.js
 ┃ ┣ detail
 ┃ ┃ ┣ [id]
 ┃ ┃ ┃ ┗ page.js
-┃ ┃ ┣ detailpage.module.css
-┃ ┃ ┗ page.js
+┃ ┃ ┗ detailpage.module.css
 ┃ ┣ explore
 ┃ ┃ ┣ explorepage.module.css
 ┃ ┃ ┗ page.js
@@ -58,16 +58,18 @@
 ┃ ┣ common
 ┃ ┃ ┣ Button.js
 ┃ ┃ ┣ Button.module.css
+┃ ┃ ┣ Dropdown.js
 ┃ ┃ ┣ Slider.js
 ┃ ┃ ┗ Slider.module.css
 ┃ ┣ hook
+┃ ┃ ┣ useFetchData.js
+┃ ┃ ┣ useFetchDetailData.js
 ┃ ┃ ┗ useLanguageData.js
 ┃ ┣ widget
 ┃ ┃ ┣ Explore.js
 ┃ ┃ ┣ Eye.js
 ┃ ┃ ┗ Language.js
-┃ ┣ ClientProvider.js
-┃ ┗ ThreeModel.js
+┃ ┗ ClientProvider.js
 ┣ public
 ┣ node_modules
 ┣ .env

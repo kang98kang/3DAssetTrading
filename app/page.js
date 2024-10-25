@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useLanguageData } from "../components/hook/useLanguageData.js";
 import Button from "../components/common/Button";
 import styles from "./mainpage.module.css";
+import SignIn from "@/components/widget/Signin.js";
 
 const EyeModel = dynamic(() => import("../components/widget/Eye.js"), {
   ssr: false,
@@ -45,6 +46,7 @@ export default function Home() {
               label={translations[language]?.Main[3]}
               onClick={() => handleRoute("detail")}
             />
+            <SignIn />
           </div>
         </div>
         <div className={styles.modelSection}>
