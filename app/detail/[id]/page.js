@@ -1,33 +1,31 @@
 "use client";
 
 import { useState } from "react";
+import { useParams } from "next/navigation";
+import useFetchDetailData from "../../../components/hook/useFetchDetailData";
 import { useLanguageData } from "../../../components/hook/useLanguageData";
 import Button from "@/components/common/Button";
 import Slider from "@/components/common/Slider";
 import styles from "../detailpage.module.css";
 
-const images = [
-  { src: "/images/image1.jpg", alt: "Image 1" },
-  { src: "/images/image2.jpg", alt: "Image 2" },
-  { src: "/images/image3.webp", alt: "Image 3" },
-  { src: "/images/image4.webp", alt: "Image 4" },
-];
-
 export default function Detail() {
-  const id = 1;
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const { language, translations } = useLanguageData();
+  const { id } = useParams();
+  const data = useFetchDetailData({ id });
 
+  if (!data) return <div>Loading...</div>;
   return (
     <div className={styles.test}>
       <div className={styles.minheader}>
         <div className={styles.productContainer}>
           <div className={styles.leftSection}>
-            <span className={styles.filename}>Filename: {id}</span>
+            <span className={styles.filename}>
+              Filename: {data.name} {/* Promise 해제 후 name 사용 */}
+            </span>
           </div>
           <div className={styles.rightSection}>
-            <span className={styles.price}>Price</span>
+            <span className={styles.price}>Price: {data.price}</span>
             <Button
               backgroundColor={
                 process.env.NEXT_PUBLIC_BACKGROUND_COLOR_TERTIARY
@@ -49,31 +47,31 @@ export default function Detail() {
       </div>
 
       <div className={styles.slideInfo}>
-        {currentIndex + 1} of {images.length}
+        {currentIndex + 1} of {data.preview?.length || 0}
       </div>
 
       <Slider
-        images={images}
+        images={data.modeling || []}
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
       />
 
       <div className={styles.contentContainer}>
         <div className={styles.mainContent}>
-          <p>작성자 게시글 표시 부분</p>
+          <p>{data.description}</p>
         </div>
         <div className={styles.sideContent}>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>FILE</div>
-            <div className={styles.sideContentDetail}>FILE 들어갈 부분</div>
+            <div className={styles.sideContentDetail}>{data.file}</div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>PROGRAM</div>
-            <div className={styles.sideContentDetail}>PROGRAM 들어갈 부분</div>
+            <div className={styles.sideContentDetail}>{data.extension}</div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>ETC</div>
-            <div className={styles.sideContentDetail}>ETC 들어갈 부분</div>
+            <div className={styles.sideContentDetail}>{data.isAnimated}</div>
           </div>
         </div>
       </div>

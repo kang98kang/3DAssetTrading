@@ -80,17 +80,19 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
       <div className={styles.sliderContainer}>
         <div className={styles.slider}>
           <AnimatePresence initial={false} custom={direction}>
-            <motion.img
-              custom={direction}
-              variants={boxVariants}
-              key={currentIndex}
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
-              initial="entry"
-              animate="center"
-              exit="exit"
-              className={styles.image}
-            />
+            {images.length > 0 && (
+              <motion.img
+                custom={direction}
+                variants={boxVariants}
+                key={currentIndex}
+                src={images[currentIndex]}
+                alt={images[currentIndex]}
+                initial="entry"
+                animate="center"
+                exit="exit"
+                className={styles.image}
+              />
+            )}
           </AnimatePresence>
         </div>
 
@@ -130,15 +132,22 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
                   handleThumbnailClick(index + currentPage * thumbnailPerPage)
                 }
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  className={styles.thumbnailImage}
-                  width={25}
-                  height={25}
-                />
+                {image && (
+                  <Image
+                    src={
+                      image.startsWith("http") || image.startsWith("/")
+                        ? image
+                        : `/${image}`
+                    }
+                    alt="Thumbnail"
+                    className={styles.thumbnailImage}
+                    width={25}
+                    height={25}
+                  />
+                )}
               </div>
             ))}
+
             {images.length > 19 && (
               <>
                 <button
