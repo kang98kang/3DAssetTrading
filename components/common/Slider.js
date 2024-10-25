@@ -138,8 +138,8 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
                       src={image}
                       alt="Thumbnail"
                       className={styles.thumbnailImage}
-                      width={25}
-                      height={25}
+                      width={15}
+                      height={15}
                     />
                   )}
               </div>

@@ -11,7 +11,7 @@
       "상의",
       "하의"
     ],
-    "Login": ["로그인", "로그아웃", "회원가입"],
+    "Login": ["로그인", "로그아웃", "회원가입", "디스코드로 로그인하기"],
     "Detail": ["구매하기", "장바구니"],
     "Footer": [
       "주식회사 몬스테라텍",
@@ -21,7 +21,8 @@
       "메인페이지 테스트",
       "3D 에셋을 관리하세요. 3D 및 AR 경험을 배포하고 다른 사람과 공동 작업하세요. 당신의 작품을 선보이고 3D 모델을 구매 및 판매할 기회입니다.",
       "탐색페이지로 이동",
-      "상세페이지로 이동"
+      "로그인페이지로 이동",
+      "메인페이지로 돌아가기"
     ]
   },
   "en": {
@@ -37,7 +38,7 @@
       "Bottom"
     ],
     "Detail": ["Buy", "Cart"],
-    "Login": ["Login", "Logout", "Signin"],
+    "Login": ["Login", "Logout", "Signin", "Login with Discord"],
     "Footer": [
       "Monsteratec Co. Ltd.",
       "764-88-02769 / 3F, 4F Geonil Building, 161 Hakdong-ro, Gangnam-gu, Seoul / hj.kwon@monsteraedu.co.kr"
@@ -46,7 +47,8 @@
       "MainPage Test",
       "Manage your 3D assets. Distribute 3D & AR experiences. Collaborate with others. Showcase your work. Buy & sell 3D models.",
       "Go to ExplorePage",
-      "Go to DetailPage"
+      "Go to LoginPage",
+      "Go back to Mainpage"
     ]
   }
 }

@@ -44,7 +44,7 @@ export default function Home() {
               width="auto"
               height="34px"
               label={translations[language]?.Main[3]}
-              onClick={() => handleRoute("detail")}
+              onClick={() => handleRoute("login")}
             />
             <SignIn />
           </div>

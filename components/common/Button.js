@@ -10,6 +10,7 @@ const Button = ({
   height,
   backgroundColor = process.env.NEXT_PUBLIC_BACKGROUND_COLOR_SECONDARY,
   label,
+  iconSrc,
   onClick = () => alert("Button TEST!"),
   fontSize = "1em",
 }) => {
@@ -32,6 +33,7 @@ const Button = ({
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
+      {iconSrc && <img src={iconSrc} alt="Icon" className={styles.icon} />}
       {label}
     </motion.button>
   );
