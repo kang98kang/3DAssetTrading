@@ -132,19 +132,16 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
                   handleThumbnailClick(index + currentPage * thumbnailPerPage)
                 }
               >
-                {image && (
-                  <Image
-                    src={
-                      image.startsWith("http") || image.startsWith("/")
-                        ? image
-                        : `/${image}`
-                    }
-                    alt="Thumbnail"
-                    className={styles.thumbnailImage}
-                    width={25}
-                    height={25}
-                  />
-                )}
+                {typeof image === "string" &&
+                  (image.startsWith("http") || image.startsWith("/")) && (
+                    <Image
+                      src={image}
+                      alt="Thumbnail"
+                      className={styles.thumbnailImage}
+                      width={25}
+                      height={25}
+                    />
+                  )}
               </div>
             ))}
 
