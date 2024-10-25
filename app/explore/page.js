@@ -84,6 +84,7 @@ function ExploreContent() {
   const [isAnimated, setIsAnimated] = useState(false);
   const { data, setRequestData } = useFetchData({
     name,
+    category,
     program: selectedModelFilter,
     priceMin: priceRange[0],
     priceMax: priceRange[1],
@@ -93,12 +94,13 @@ function ExploreContent() {
   useEffect(() => {
     setRequestData({
       name,
+      category,
       program: selectedModelFilter,
       priceMin: priceRange[0],
       priceMax: priceRange[1],
       isAnimated,
     });
-  }, [name, selectedModelFilter, isAnimated]);
+  }, [name, category, selectedModelFilter, isAnimated]);
 
   const handleAfterChange = (newRange) => {
     setPriceRange(newRange);

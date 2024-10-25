@@ -24,18 +24,19 @@ async function connect(sql, values = []) {
 export async function POST(request) {
   try {
     const reqBody = await request.json();
-    let { name, program, priceMin, priceMax, isAnimated } = reqBody;
-
-    if (name) {
-      name = disassemble(name);
-    }
+    let { name, category, program, priceMin, priceMax, isAnimated } = reqBody;
 
     let sql = `SELECT a.id, a.name, a.preview, a.extension, a.price FROM asset a WHERE 1=1`;
     let params = [];
 
     if (name) {
       sql += ` AND a.name_disassemble LIKE ?`;
-      params.push(`%${name}%`);
+      params.push(`%${disassemble(name)}%`);
+    }
+
+    if (category) {
+      sql += ` AND a.category LIKE ?`;
+      params.push(`%${category}%`);
     }
 
     if (program && program.length > 0) {

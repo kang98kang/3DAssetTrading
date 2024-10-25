@@ -93,9 +93,9 @@ export default function Dropdown({
               onMouseEnter={() => withSubmenu && toggleSubmenu(item.value)}
               onMouseLeave={() => withSubmenu && toggleSubmenu(null)}
             >
-              {translations
-                ? translations[language]?.Explore[index]
-                : item.label}
+              {item.label ||
+                translations[language]?.Explore[index] ||
+                "Unnamed"}
               {withSubmenu && activeSubmenu === item.value && item.submenu && (
                 <motion.ul
                   className={styles.submenu}
@@ -112,9 +112,9 @@ export default function Dropdown({
                         onItemClick(subItem.value);
                       }}
                     >
-                      {translations
-                        ? translations[language]?.Explore[subIndex + index + 1]
-                        : subItem.label}
+                      {subItem.label ||
+                        translations[language]?.Explore[index] ||
+                        "Unnamed"}
                     </motion.li>
                   ))}
                 </motion.ul>
