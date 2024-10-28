@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
+import { useDispatch } from "react-redux";
 import useFetchDetailData from "../../../components/hook/useFetchDetailData";
 import { useLanguageData } from "../../../components/hook/useLanguageData";
+import { addToCart } from "../../store/cartSlice";
 import Button from "@/components/common/Button";
 import Slider from "@/components/common/Slider";
 import styles from "../detailpage.module.css";
@@ -12,9 +14,15 @@ export default function Detail() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { language, translations } = useLanguageData();
   const { id } = useParams();
+  const dispatch = useDispatch();
   const data = useFetchDetailData({ id });
 
   if (!data) return <div>Loading...</div>;
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(data));
+  };
+
   return (
     <div className={styles.test}>
       <div className={styles.minheader}>
@@ -43,6 +51,7 @@ export default function Detail() {
               width="auto"
               height="40px"
               label={translations[language]?.Detail[1]}
+              onClick={handleAddToCart}
             />
           </div>
         </div>

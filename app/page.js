@@ -43,8 +43,8 @@ export default function Home() {
             <Button
               width="auto"
               height="34px"
-              label={translations[language]?.Main[3]}
-              onClick={() => handleRoute("login")}
+              label="장바구니페이지로 이동"
+              onClick={() => handleRoute("cart")}
             />
             <SignIn />
           </div>
