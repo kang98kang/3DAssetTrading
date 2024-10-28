@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLanguageData } from "../components/hook/useLanguageData.js";
 import Button from "../components/common/Button";
 import styles from "./mainpage.module.css";
-import SignIn from "@/components/widget/Signin.js";
+import { signIn, useSession } from "next-auth/react";
 
 const EyeModel = dynamic(() => import("../components/widget/Eye.js"), {
   ssr: false,
@@ -17,6 +17,8 @@ export default function Home() {
   const handleRoute = (route) => {
     router.push(`/${route}`);
   };
+
+  const { data: session } = useSession();
 
   const { language, translations } = useLanguageData();
 
@@ -46,7 +48,17 @@ export default function Home() {
               label="장바구니페이지로 이동"
               onClick={() => handleRoute("cart")}
             />
-            <SignIn />
+            {session ? null : (
+              <Button
+                onClick={async () => {
+                  await signIn("discord", { redirectTo: "/" });
+                }}
+                width="360px"
+                height="42px"
+                label="Login"
+                iconSrc="/icons/discord.png"
+              />
+            )}
           </div>
         </div>
         <div className={styles.modelSection}>

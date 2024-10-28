@@ -2,6 +2,7 @@
 
 import { Suspense, useState, useEffect } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import { useLanguageData } from "../components/hook/useLanguageData.js";
 import Button from "../components/common/Button";
 import Explore from "../components/widget/Explore.js";
@@ -10,6 +11,8 @@ import styles from "./Header.module.css";
 
 function HeaderContent() {
   const { language, translations } = useLanguageData();
+
+  const { data: session } = useSession();
 
   const router = useRouter();
   const pathname = usePathname();
@@ -87,22 +90,41 @@ function HeaderContent() {
         )}
         <Language />
         <div className={styles.loginContainer}>
-          <Button
-            onClick={() => {
-              router.push("/login");
-            }}
-            width="70px"
-            height="34px"
-            label={translations[language]?.Login[0]}
-          />
-          <Button
-            onClick={() => {
-              router.push("/register");
-            }}
-            width="75px"
-            height="34px"
-            label={translations[language]?.Login[2]}
-          />
+          {session ? (
+            <div className={styles.profileContainer}>
+              <img
+                src={session.user.image || "/icons/default-profile.png"}
+                alt="Profile"
+                className={styles.profileImage}
+                onClick={() => router.push("/profile")}
+              />
+              <Button
+                onClick={() => signOut()}
+                width="70px"
+                height="34px"
+                label="Logout"
+              />
+            </div>
+          ) : (
+            <>
+              <Button
+                onClick={() => {
+                  router.push("/login");
+                }}
+                width="70px"
+                height="34px"
+                label={translations[language]?.Login[0]}
+              />
+              <Button
+                onClick={() => {
+                  router.push("/register");
+                }}
+                width="75px"
+                height="34px"
+                label={translations[language]?.Login[2]}
+              />
+            </>
+          )}
         </div>
       </div>
     </>

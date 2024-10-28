@@ -29,9 +29,13 @@
 ┣ .next
 ┣ app
 ┃ ┣ api
+┃ ┃ ┣ auth
+┃ ┃ ┃ ┗ [...nextauth]
+┃ ┃ ┃   ┗ route.js
 ┃ ┃ ┣ search
+┃ ┃ ┃ ┣ [id]
+┃ ┃ ┃ ┃ ┗ route.js
 ┃ ┃ ┃ ┗ route.js
-┃ ┃ ┗ route.js
 ┃ ┣ detail
 ┃ ┃ ┣ [id]
 ┃ ┃ ┃ ┗ page.js
@@ -70,12 +74,17 @@
 ┃ ┃ ┣ Eye.js
 ┃ ┃ ┗ Language.js
 ┃ ┗ ClientProvider.js
+┣ prisma
+┃ ┣ migrations
+┃ ┣ prisma.js
+┃ ┗ schema.prisma
 ┣ public
 ┣ node_modules
 ┣ .env
 ┣ .eslintrc.json
 ┣ .gitattributes
 ┣ .gitignore
+┣ auth.js
 ┣ jsconfig.json
 ┣ next.config.mjs
 ┣ package-lock.json

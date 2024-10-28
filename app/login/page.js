@@ -14,8 +14,8 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
-  const handleSignIn = () => {
-    signIn("discord");
+  const handleSignIn = (provider) => {
+    signIn(provider);
   };
 
   const { language, translations } = useLanguageData();
@@ -25,7 +25,7 @@ export default function Login() {
         <div className={styles.wrapper}>
           <h1 className={styles.title}>{translations[language]?.Login[0]}</h1>
           <Button
-            onClick={handleSignIn}
+            onClick={() => handleSignIn("discord")}
             width="360px"
             height="42px"
             label={translations[language]?.Login[3]}
