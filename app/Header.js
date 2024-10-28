@@ -96,6 +96,9 @@ function HeaderContent() {
             label={translations[language]?.Login[0]}
           />
           <Button
+            onClick={() => {
+              router.push("/register");
+            }}
             width="75px"
             height="34px"
             label={translations[language]?.Login[2]}

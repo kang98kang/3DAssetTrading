@@ -29,8 +29,8 @@ const EyeModel = () => (
   <Canvas>
     <ambientLight color="white" intensity={2} />
     <pointLight position={[10, 10, 10]} />
-    <Eye position={[-2, 0, 0]} />
-    <Eye position={[2, 0, 0]} />
+    <Eye position={[-1.5, 0, 0]} />
+    <Eye position={[1.5, 0, 0]} />
     <OrbitControls minDistance={5} maxDistance={8} />
   </Canvas>
 );

@@ -11,7 +11,13 @@
       "상의",
       "하의"
     ],
-    "Login": ["로그인", "로그아웃", "회원가입", "디스코드로 로그인하기"],
+    "Login": [
+      "로그인",
+      "로그아웃",
+      "회원가입",
+      "디스코드로 로그인하기",
+      "회원가입 하기"
+    ],
     "Detail": [
       "구매하기",
       "장바구니",
@@ -56,7 +62,7 @@
       "Total amount",
       "Checkout"
     ],
-    "Login": ["Login", "Logout", "Signin", "Login with Discord"],
+    "Login": ["Login", "Logout", "Signin", "Login with Discord", "Signin"],
     "Footer": [
       "Monsteratec Co. Ltd.",
       "764-88-02769 / 3F, 4F Geonil Building, 161 Hakdong-ro, Gangnam-gu, Seoul / hj.kwon@monsteraedu.co.kr"

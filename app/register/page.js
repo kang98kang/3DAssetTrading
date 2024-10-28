@@ -4,8 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useLanguageData } from "../../components/hook/useLanguageData";
-import Image from "next/image";
-import styles from "./loginpage.module.css";
+import styles from "./registerpage.module.css";
 import Button from "@/components/common/Button";
 
 export default function Login() {
@@ -23,7 +22,7 @@ export default function Login() {
     <div className={styles.mainContainer}>
       <section className={styles.section}>
         <div className={styles.wrapper}>
-          <h1 className={styles.title}>{translations[language]?.Login[0]}</h1>
+          <h1 className={styles.title}>{translations[language]?.Login[2]}</h1>
           <Button
             onClick={handleSignIn}
             width="360px"
@@ -38,9 +37,9 @@ export default function Login() {
                 textAlign: "center",
                 cursor: "pointer",
               }}
-              onClick={() => handleRoute("register")}
+              onClick={() => handleRoute("login")}
             >
-              {translations[language]?.Login[4]}
+              {translations[language]?.Login[0]}
             </div>
             <div style={{ cursor: "pointer" }} onClick={() => handleRoute("")}>
               {translations[language]?.Main[4]}
