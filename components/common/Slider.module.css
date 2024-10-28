@@ -92,6 +92,12 @@
   align-items: center;
 }
 
+@media (max-width: 1200px) {
+  .thumbnailContainer {
+    display: none;
+  }
+}
+
 .thumbnailImgContainer {
   min-height: 40px;
   display: inline-flex;

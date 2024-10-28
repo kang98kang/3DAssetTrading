@@ -12,16 +12,27 @@ const Eye = ({ position }) => {
   });
 
   const ref = useRef();
-  const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
 
   useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    ref.current.rotation.y = Math.sin(time * 0.5) * 0.5;
-    ref.current.rotation.x = Math.sin(time * 0.3) * 0.3;
+    const { x, y } = state.mouse; // 마우스 위치를 가져옵니다.
+    const targetX = x * 0.5; // 눈이 마우스를 쳐다보게 X축 회전 각도 설정
+    const targetY = -y * 0.5; // 눈이 마우스를 쳐다보게 Y축 회전 각도 설정
+
+    // 현재 회전 각도와 목표 회전 각도를 보간하여 부드럽게 움직이게 설정
+    ref.current.rotation.x = THREE.MathUtils.lerp(
+      ref.current.rotation.x,
+      targetY,
+      0.1
+    );
+    ref.current.rotation.y = THREE.MathUtils.lerp(
+      ref.current.rotation.y,
+      targetX,
+      0.1
+    );
   });
 
   return (
-    <primitive object={obj.clone()} ref={ref} scale={0.5} position={position} />
+    <primitive object={obj.clone()} ref={ref} scale={0.3} position={position} />
   );
 };
 
@@ -29,8 +40,10 @@ const EyeModel = () => (
   <Canvas>
     <ambientLight color="white" intensity={2} />
     <pointLight position={[10, 10, 10]} />
-    <Eye position={[-1.5, 0, 0]} />
-    <Eye position={[1.5, 0, 0]} />
+    {/* 왼쪽 눈 */}
+    <Eye position={[-1, 0, 0]} />
+    {/* 오른쪽 눈 */}
+    <Eye position={[1, 0, 0]} />
     <OrbitControls minDistance={5} maxDistance={8} />
   </Canvas>
 );
