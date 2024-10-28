@@ -38,7 +38,7 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
   };
 
   const handleThumbnailClick = (index) => {
-    if (currentIndex > index) {
+    if (currentIndex < index) {
       setDirection(false);
     } else {
       setDirection(true);

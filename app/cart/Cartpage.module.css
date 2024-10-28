@@ -20,6 +20,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: var(--background-color-secondary);
   min-height: 80vh;
+  opacity: 0.8;
 }
 
 .cartTitle {
@@ -47,12 +48,12 @@
   padding: 10px;
   background-color: var(--background-color-secondary);
   border-radius: 8px;
-  transition: background-color 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .cartItem:hover {
   color: var(--accent-color-primary);
-  background-color: var(--background-color-primary);
+  opacity: 0.8;
 }
 
 .image {

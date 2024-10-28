@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useParams } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useDispatch } from "react-redux";
 import useFetchDetailData from "../../../components/hook/useFetchDetailData";
 import { useLanguageData } from "../../../components/hook/useLanguageData";
@@ -12,15 +12,18 @@ import styles from "../detailpage.module.css";
 
 export default function Detail() {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const { language, translations } = useLanguageData();
   const { id } = useParams();
+  const router = useRouter();
   const dispatch = useDispatch();
   const data = useFetchDetailData({ id });
 
   if (!data) return <div>Loading...</div>;
 
   const handleAddToCart = () => {
-    dispatch(addToCart(data));
+    dispatch(addToCart({ ...data, quantity: 1 }));
+    router.push("/cart");
   };
 
   return (
