@@ -21,11 +21,13 @@ export default function Detail() {
         <div className={styles.productContainer}>
           <div className={styles.leftSection}>
             <span className={styles.filename}>
-              Filename: {data.name} {/* Promise 해제 후 name 사용 */}
+              {translations[language]?.Detail[2]}: {data.name}
             </span>
           </div>
           <div className={styles.rightSection}>
-            <span className={styles.price}>Price: {data.price}</span>
+            <span className={styles.price}>
+              {translations[language]?.Detail[3]}: {data.price}
+            </span>
             <Button
               backgroundColor={
                 process.env.NEXT_PUBLIC_BACKGROUND_COLOR_TERTIARY
@@ -47,7 +49,7 @@ export default function Detail() {
       </div>
 
       <div className={styles.slideInfo}>
-        {currentIndex + 1} of {data.preview?.length || 0}
+        {currentIndex + 1} of {data.modeling?.length || 0}
       </div>
 
       <Slider

@@ -12,7 +12,7 @@
       "하의"
     ],
     "Login": ["로그인", "로그아웃", "회원가입", "디스코드로 로그인하기"],
-    "Detail": ["구매하기", "장바구니"],
+    "Detail": ["구매하기", "장바구니", "파일명", "가격"],
     "Footer": [
       "주식회사 몬스테라텍",
       "764-88-02769 / 서울특별시 강남구 학동로 161, 건일빌딩 3층, 4층 / hj.kwon@monsteraedu.co.kr"
@@ -37,7 +37,7 @@
       "Top",
       "Bottom"
     ],
-    "Detail": ["Buy", "Cart"],
+    "Detail": ["Buy", "Cart", "Filename", "Price"],
     "Login": ["Login", "Logout", "Signin", "Login with Discord"],
     "Footer": [
       "Monsteratec Co. Ltd.",
