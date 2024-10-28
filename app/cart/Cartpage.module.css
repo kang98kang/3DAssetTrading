@@ -47,6 +47,12 @@
   padding: 10px;
   background-color: var(--background-color-secondary);
   border-radius: 8px;
+  transition: background-color 0.5s ease;
+}
+
+.cartItem:hover {
+  color: var(--accent-color-primary);
+  background-color: var(--background-color-primary);
 }
 
 .image {
