@@ -1,29 +1,38 @@
-import { useRef } from "react";
-import { Canvas, useLoader } from "@react-three/fiber";
+import { Canvas, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { OBJLoader, MTLLoader } from "three-stdlib";
+import { useRef, useState } from "react";
+import * as THREE from "three";
 
-const EyeModel = () => {
-  // MTL 파일을 먼저 로드
+const Eye = ({ position }) => {
   const materials = useLoader(MTLLoader, "/3dmodels/eye/eyeball.mtl");
-
-  // MTL 파일로부터 메터리얼 적용 후, OBJ 파일 로드
   const obj = useLoader(OBJLoader, "/3dmodels/eye/eyeball.obj", (loader) => {
-    materials.preload(); // 메터리얼을 미리 로드
-    loader.setMaterials(materials); // OBJ 로더에 메터리얼 설정
+    materials.preload();
+    loader.setMaterials(materials);
   });
 
   const ref = useRef();
+  const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    ref.current.rotation.y = Math.sin(time * 0.5) * 0.5;
+    ref.current.rotation.x = Math.sin(time * 0.3) * 0.3;
+  });
 
   return (
-    <Canvas>
-      <ambientLight color="white" intensity={2} />{" "}
-      {/*color 빛 색깔 조정, intensity 빛 강도*/}
-      <pointLight position={[10, 10, 10]} />
-      <primitive object={obj} ref={ref} scale={0.5} /> {/* OBJ 모델 렌더링 */}
-      <OrbitControls minDistance={2} maxDistance={10} /> {/* 카메라 줌 설정 */}
-    </Canvas>
+    <primitive object={obj.clone()} ref={ref} scale={0.5} position={position} />
   );
 };
+
+const EyeModel = () => (
+  <Canvas>
+    <ambientLight color="white" intensity={2} />
+    <pointLight position={[10, 10, 10]} />
+    <Eye position={[-2, 0, 0]} />
+    <Eye position={[2, 0, 0]} />
+    <OrbitControls minDistance={5} maxDistance={8} />
+  </Canvas>
+);
 
 export default EyeModel;

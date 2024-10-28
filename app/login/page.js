@@ -31,8 +31,20 @@ export default function Login() {
             label={translations[language]?.Login[3]}
             iconSrc="/icons/discord.png"
           />
-          <div onClick={() => handleRoute("/")}>
-            {translations[language]?.Main[4]}
+          <div>
+            <div
+              style={{
+                marginBottom: "5px",
+                textAlign: "center",
+                cursor: "pointer",
+              }}
+              onClick={() => handleRoute("register")}
+            >
+              회원가입 하기
+            </div>
+            <div style={{ cursor: "pointer" }} onClick={() => handleRoute("")}>
+              {translations[language]?.Main[4]}
+            </div>
           </div>
         </div>
       </section>
