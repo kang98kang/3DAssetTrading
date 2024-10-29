@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import classNames from "classnames";
 import styles from "../../app/Header.module.css";
 
 const dropdownVariants = {
@@ -59,6 +60,8 @@ export default function Dropdown({
   translations,
   language,
   withSubmenu = false,
+  alignRight = false,
+  isLoggedIn = false,
 }) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
@@ -73,13 +76,15 @@ export default function Dropdown({
 
   return (
     <div
-      className={styles.explore}
+      className={classNames(styles.explore, { [styles.noAfter]: isLoggedIn })}
       onMouseEnter={toggleDropdown}
       onMouseLeave={toggleDropdown}
     >
       {title}
       <motion.div
-        className={styles.dropdown}
+        className={classNames(styles.dropdown, {
+          [styles.alignRight]: alignRight,
+        })}
         initial="hidden"
         animate={isDropdownVisible ? "visible" : "hidden"}
         variants={dropdownVariants}

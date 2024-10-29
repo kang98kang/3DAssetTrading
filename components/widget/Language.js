@@ -22,8 +22,6 @@ export default function Language() {
   };
 
   // 드롭다운
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-
   const dropdownItems = [
     { label: "한국어", value: "ko" },
     { label: "English", value: "en" },

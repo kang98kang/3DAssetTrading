@@ -4,9 +4,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useLanguageData } from "../../components/hook/useLanguageData";
-import Image from "next/image";
-import styles from "./loginpage.module.css";
 import Button from "@/components/common/Button";
+import styles from "./loginpage.module.css";
 
 export default function Login() {
   const router = useRouter();
@@ -14,11 +13,12 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
-  const handleSignIn = (provider) => {
-    signIn(provider);
+  const handleSignIn = async (provider) => {
+    await signIn(provider);
   };
 
   const { language, translations } = useLanguageData();
+
   return (
     <div className={styles.mainContainer}>
       <section className={styles.section}>
