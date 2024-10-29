@@ -19,7 +19,7 @@ export default function Home() {
     router.push(`/${route}`);
   };
 
-  const { session } = useAuth();
+  useAuth();
   const user = useSelector((state) => state.auth.user);
 
   const { language, translations } = useLanguageData();

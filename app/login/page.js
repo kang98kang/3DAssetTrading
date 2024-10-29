@@ -14,7 +14,7 @@ export default function Login() {
   };
 
   const handleSignIn = async (provider) => {
-    await signIn(provider);
+    await signIn(provider, null, { prompt: "none" });
   };
 
   const { language, translations } = useLanguageData();
