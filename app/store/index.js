@@ -4,10 +4,12 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import languageReducer from "./languageSlice";
 import cartReducer from "./cartSlice";
+import authReducer from "./userSlice";
 
 const rootReducer = combineReducers({
   language: languageReducer,
   cart: cartReducer,
+  auth: authReducer,
 });
 
 const persistConfig = {

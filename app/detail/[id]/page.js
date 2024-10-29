@@ -5,7 +5,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useDispatch } from "react-redux";
 import useFetchDetailData from "../../../components/hook/useFetchDetailData";
 import { useLanguageData } from "../../../components/hook/useLanguageData";
-import { addToCart } from "../../store/cartSlice";
+import { addToCart } from "../../store/authSlice";
 import Button from "@/components/common/Button";
 import Slider from "@/components/common/Slider";
 import styles from "../detailpage.module.css";
