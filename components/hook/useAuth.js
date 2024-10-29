@@ -15,5 +15,5 @@ export const useAuth = () => {
     }
   }, [session, dispatch]);
 
-  return { session, signIn, signOut };
+  return { session };
 };
