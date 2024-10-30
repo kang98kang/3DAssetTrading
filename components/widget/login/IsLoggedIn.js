@@ -17,24 +17,11 @@ export default function IsLoggedIn() {
     { label: translations[language]?.Login[6], value: "profile" },
     { label: translations[language]?.Detail[1], value: "cart" },
     { label: translations[language]?.Login[1], value: "logout" },
-    { label: translations[language]?.Login[5], value: "signout" },
   ];
 
   const handleCategoryClick = async (route) => {
     if (route === "logout") {
       signOut();
-    } else if (route === "signout") {
-      if (
-        confirm("서비스 탈퇴를 진행하시겠습니까? 이 작업은 돌이킬 수 없습니다.")
-      ) {
-        const response = await fetch("/api/user/delete", { method: "DELETE" });
-        if (response.ok) {
-          alert("탈퇴가 완료되었습니다.");
-          window.location.reload();
-        } else {
-          alert("탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요.");
-        }
-      }
     } else {
       router.push(`/${route}`);
     }

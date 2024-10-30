@@ -17,12 +17,26 @@ export default function Profile() {
     router.push(`/${route}`);
   };
 
-  const handleSignIn = async (provider) => {
+  const handleLogIn = async (provider) => {
     await signIn(provider, null, { prompt: "none" });
   };
 
-  const handleSignOut = () => {
-    signOut();
+  const handleLogOut = async () => {
+    await signOut();
+  };
+
+  const handleSignOut = async () => {
+    if (
+      confirm("서비스 탈퇴를 진행하시겠습니까? 이 작업은 돌이킬 수 없습니다.")
+    ) {
+      const response = await fetch("/api/user/delete", { method: "DELETE" });
+      if (response.ok) {
+        alert("탈퇴가 완료되었습니다.");
+        window.location.href = "/";
+      } else {
+        alert("탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요.");
+      }
+    }
   };
 
   return (
@@ -43,23 +57,29 @@ export default function Profile() {
                 <Button
                   onClick={() => handleRoute("cart")}
                   width="250px"
-                  height="40px"
+                  height="42px"
                   label={translations[language]?.Detail[1]}
                 />
                 <Button
-                  onClick={() => handleSignOut()}
+                  onClick={handleLogOut}
                   width="250px"
-                  height="40px"
+                  height="42px"
                   label={translations[language]?.Login[1]}
+                />
+                <Button
+                  onClick={handleSignOut}
+                  width="250px"
+                  height="42px"
+                  label={translations[language]?.Login[5]}
                 />
               </div>
             </div>
           ) : (
             <Button
-              onClick={() => handleSignIn("discord")}
-              width="300px"
+              onClick={() => handleLogIn("discord")}
+              width="360px"
               height="42px"
-              label={translations[language]?.Login[2]}
+              label={translations[language]?.Login[3]}
               iconSrc="/icons/discord.png"
             />
           )}

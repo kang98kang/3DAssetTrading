@@ -3,8 +3,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../store/cartSlice";
 import { useLanguageData } from "../../components/hook/useLanguageData";
-import styles from "./Cartpage.module.css";
 import Button from "@/components/common/Button";
+import styles from "./cartpage.module.css";
 
 export default function CartPage() {
   const { language, translations } = useLanguageData();

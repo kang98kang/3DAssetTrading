@@ -27,6 +27,7 @@ const Button = ({
       onClick={onClick}
       whileHover={{
         scale: 1.1,
+        zIndex: 1,
         backgroundColor: process.env.NEXT_PUBLIC_ACCENT_COLOR_PRIMARY,
         color: process.env.NEXT_PUBLIC_TEXT_COLOR_SECONDARY,
       }}
