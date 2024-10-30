@@ -26,5 +26,14 @@ export const loginUser = (userData) => async (dispatch) => {
   dispatch(setCart(cartData.cartItems));
 };
 
+export const deleteUserAccount = () => async (dispatch) => {
+  const response = await fetch("/api/user/delete", { method: "DELETE" });
+  if (response.ok) {
+    dispatch(clearUser());
+  } else {
+    console.error("Failed to delete account.");
+  }
+};
+
 export const { setUser, clearUser } = authSlice.actions;
 export default authSlice.reducer;
