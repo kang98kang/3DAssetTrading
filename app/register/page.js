@@ -32,16 +32,6 @@ export default function Login() {
             iconSrc="/icons/discord.png"
           />
           <div>
-            <div
-              style={{
-                marginBottom: "5px",
-                textAlign: "center",
-                cursor: "pointer",
-              }}
-              onClick={() => handleRoute("login")}
-            >
-              {translations[language]?.Login[0]}
-            </div>
             <div style={{ cursor: "pointer" }} onClick={() => handleRoute("")}>
               {translations[language]?.Main[4]}
             </div>

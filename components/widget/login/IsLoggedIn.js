@@ -1,16 +1,17 @@
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
-import { useLanguageData } from "../hook/useLanguageData";
-import Button from "../common/Button";
-import Dropdown from "../common/Dropdown";
-import styles from "../../app/Header.module.css";
+import { useRouter } from "next/navigation";
+import { useLanguageData } from "../../hook/useLanguageData";
+import Button from "../../common/Button";
+import Dropdown from "../../common/Dropdown";
+import LoginModal from "./LoginModal";
+import styles from "../../../app/Header.module.css";
 
 export default function IsLoggedIn() {
   const { language, translations } = useLanguageData();
-
   const router = useRouter();
-
   const { data: session } = useSession();
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   const dropdownItems = [
     { label: translations[language]?.Login[6], value: "profile" },
@@ -23,6 +24,14 @@ export default function IsLoggedIn() {
     if (route !== "logout") {
       router.push(`/${route}`);
     } else signOut();
+  };
+
+  const openLoginModal = () => {
+    setLoginModalOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setLoginModalOpen(false);
   };
 
   return (
@@ -49,15 +58,14 @@ export default function IsLoggedIn() {
       ) : (
         <>
           <Button
-            onClick={() => {
-              router.push("/login");
-            }}
+            onClick={openLoginModal}
             width="70px"
             height="34px"
             label={translations[language]?.Login[0]}
           />
           <Button
             onClick={() => {
+              setLoginModalOpen(false);
               router.push("/register");
             }}
             width="75px"
@@ -66,6 +74,7 @@ export default function IsLoggedIn() {
           />
         </>
       )}
+      {isLoginModalOpen && <LoginModal onClose={closeLoginModal} />}
     </div>
   );
 }

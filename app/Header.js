@@ -4,8 +4,8 @@ import { Suspense, useState, useEffect } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Explore from "../components/widget/Explore.js";
 import Language from "../components/widget/Language.js";
+import IsLoggedIn from "../components/widget/login/IsLoggedIn.js";
 import styles from "./Header.module.css";
-import IsLoggedIn from "@/components/widget/IsLoggedIn.js";
 
 function HeaderContent() {
   const router = useRouter();
