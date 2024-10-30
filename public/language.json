@@ -15,10 +15,13 @@
       "로그인",
       "로그아웃",
       "회원가입",
-      "디스코드로 로그인하기",
-      "회원가입 하기",
+      "디스코드로 로그인",
+      "디스코드로 회원가입",
       "회원탈퇴",
-      "프로필"
+      "프로필",
+      "서비스 탈퇴를 진행하시겠습니까? 이 작업은 돌이킬 수 없습니다.",
+      "서비스 탈퇴가 완료되었습니다.",
+      "탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요."
     ],
     "Detail": [
       "구매하기",
@@ -66,11 +69,14 @@
     "Login": [
       "Login",
       "Logout",
-      "Signin",
+      "Register",
       "Login with Discord",
-      "Signin",
-      "Signout",
-      "Profile"
+      "Register with Discord",
+      "Withdrawal",
+      "Profile",
+      "Are you sure you want to proceed with withdrawing from the service? This action is irreversible.",
+      "Your withdrawal is complete.",
+      "The withdrawal failed. If the error is repeated, please contact us."
     ],
     "Footer": [
       "Monsteratec Co. Ltd.",

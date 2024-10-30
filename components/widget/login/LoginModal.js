@@ -34,7 +34,7 @@ export default function LoginModal({ onClose }) {
               router.push("/register");
             }}
           >
-            {translations[language]?.Login[4]}
+            {translations[language]?.Login[2]}
           </div>
         </div>
       </div>

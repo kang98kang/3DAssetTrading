@@ -25,16 +25,14 @@ export default function Profile() {
     await signOut();
   };
 
-  const handleSignOut = async () => {
-    if (
-      confirm("서비스 탈퇴를 진행하시겠습니까? 이 작업은 돌이킬 수 없습니다.")
-    ) {
+  const handleWithdrawal = async () => {
+    if (confirm(`${translations[language]?.Login[7]}`)) {
       const response = await fetch("/api/user/delete", { method: "DELETE" });
       if (response.ok) {
-        alert("탈퇴가 완료되었습니다.");
+        alert(`${translations[language]?.Login[8]}`);
         window.location.href = "/";
       } else {
-        alert("탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요.");
+        alert(`${translations[language]?.Login[9]}`);
       }
     }
   };
@@ -67,7 +65,7 @@ export default function Profile() {
                   label={translations[language]?.Login[1]}
                 />
                 <Button
-                  onClick={handleSignOut}
+                  onClick={handleWithdrawal}
                   width="250px"
                   height="42px"
                   label={translations[language]?.Login[5]}

@@ -13,7 +13,7 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
-  const handleSignIn = async (provider) => {
+  const handleRegister = async (provider) => {
     await signIn(provider);
   };
 
@@ -25,10 +25,10 @@ export default function Login() {
         <div className={styles.wrapper}>
           <h1 className={styles.title}>{translations[language]?.Login[2]}</h1>
           <Button
-            onClick={() => handleSignIn("discord")}
+            onClick={() => handleRegister("discord")}
             width="360px"
             height="42px"
-            label={translations[language]?.Login[3]}
+            label={translations[language]?.Login[4]}
             iconSrc="/icons/discord.png"
           />
           <div>
