@@ -37,8 +37,7 @@
     "Main": [
       "환영합니다!",
       "3D 에셋을 관리하세요. 3D 및 AR 경험을 배포하고 다른 사람과 공동 작업하세요. 당신의 작품을 선보이고 3D 모델을 구매 및 판매할 기회입니다.",
-      "탐색페이지로 이동",
-      "로그인페이지로 이동",
+      "문의하기",
       "메인페이지로 돌아가기"
     ]
   },
@@ -78,10 +77,9 @@
       "764-88-02769 / 3F, 4F Geonil Building, 161 Hakdong-ro, Gangnam-gu, Seoul / hj.kwon@monsteraedu.co.kr"
     ],
     "Main": [
-      "Welcome",
+      "Welcome!",
       "Manage your 3D assets. Distribute 3D & AR experiences. Collaborate with others. Showcase your work. Buy & sell 3D models.",
-      "Go to ExplorePage",
-      "Go to LoginPage",
+      "Contact Us",
       "Go back to Mainpage"
     ]
   }

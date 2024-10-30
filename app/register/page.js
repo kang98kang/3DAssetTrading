@@ -33,7 +33,7 @@ export default function Login() {
           />
           <div>
             <div style={{ cursor: "pointer" }} onClick={() => handleRoute("")}>
-              {translations[language]?.Main[4]}
+              {translations[language]?.Main[3]}
             </div>
           </div>
         </div>

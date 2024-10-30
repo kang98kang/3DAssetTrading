@@ -50,14 +50,9 @@ export default function Home() {
               width="auto"
               height="34px"
               label={translations[language]?.Main[2]}
-              onClick={() => handleRoute("explore")}
-            />
-
-            <Button
-              width="auto"
-              height="34px"
-              label="장바구니페이지로 이동"
-              onClick={() => handleRoute("cart")}
+              onClick={() =>
+                (window.location.href = "https://monsteratech.com/contact")
+              }
             />
           </div>
         </div>
