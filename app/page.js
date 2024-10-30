@@ -36,7 +36,10 @@ export default function Home() {
         <div className={styles.textSection}>
           {user ? (
             <>
-              <h1>Welcome, {user.name}</h1>
+              <h1>
+                {translations[language]?.Main[0]}, {user.name}{" "}
+                {language === "ko" ? "님" : " "}
+              </h1>
             </>
           ) : (
             <h1>{translations[language]?.Main[0]}</h1>
