@@ -26,8 +26,6 @@ export default function Detail() {
     router.push("/cart");
   };
 
-  console.log("data Test: ", data);
-
   return (
     <div className={styles.test}>
       <div className={styles.minheader}>
@@ -74,7 +72,8 @@ export default function Detail() {
 
       <div className={styles.contentContainer}>
         <div className={styles.mainContent}>
-          <p>{data.description}</p>
+          <div className={styles.mainTitle}>Subscription</div>
+          <p className={styles.mainDetail}>{data.description}</p>
         </div>
         <div className={styles.sideContent}>
           <div className={styles.sideItem}>
