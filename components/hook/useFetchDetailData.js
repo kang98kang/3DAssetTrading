@@ -15,6 +15,13 @@ export default function useFetchDetailData({ id }) {
         }
 
         const responseData = await response.json();
+
+        if (responseData.modeling) {
+          responseData.modeling = responseData.modeling.map(
+            (filename) => `/api/minio/${filename.split("/").pop()}`
+          );
+        }
+
         setData(responseData);
       } catch (error) {
         console.error("데이터를 가져오는 중 오류가 발생했습니다: ", error);
