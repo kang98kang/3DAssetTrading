@@ -122,3 +122,39 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.sideContentDetail__program {
+  color: var(--text-color-secondary);
+  max-height: 6.63vh;
+  min-height: 25px;
+  background-color: #eee;
+  border-radius: 0.28vh;
+  font-size: 1.04rem;
+  margin-top: 0.46vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35px, min-content));
+  gap: 15px;
+  justify-content: start;
+  padding: 0.5vh;
+}
+
+.extensionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55px;
+}
+
+.extensionIcon {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 5px;
+}
+
+.extensionLabel {
+  font-size: 0.5rem;
+  color: #555;
+  text-align: center;
+}
