@@ -274,7 +274,10 @@ function ExploreContent() {
             onMouseEnter={() => handleMouseEnter(item.id)}
             onMouseLeave={handleMouseLeave}
           >
-            <img src={item.preview[0]} className={styles.itemImage} />
+            <img
+              src={`/api/minio/${item.preview[0]}`}
+              className={styles.itemImage}
+            />
             <div className={styles.itemInfo}>
               <span className={styles.itemName}>{item.name}</span>
               <span className={styles.itemPrice}>{item.price}$</span>

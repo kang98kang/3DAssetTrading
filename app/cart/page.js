@@ -10,7 +10,6 @@ export default function CartPage() {
   const { language, translations } = useLanguageData();
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-  console.log(cartItems);
 
   const handleRemove = (id) => {
     dispatch(removeFromCart(id));

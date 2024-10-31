@@ -11,6 +11,14 @@ const nextConfig = {
   images: {
     domains: ["minio.daraerang.com"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/minio/:path*",
+        destination: `http://${process.env.DB_HOST}:9000/test/:path*`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
