@@ -72,20 +72,38 @@ export default function Detail() {
 
       <div className={styles.contentContainer}>
         <div className={styles.mainContent}>
-          <p>{data.description}</p>
+          <div className={styles.mainTitle}>Subscription</div>
+          <p className={styles.mainDetail}>{data.description}</p>
         </div>
         <div className={styles.sideContent}>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>FILE</div>
-            <div className={styles.sideContentDetail}>{data.file}</div>
+            <div className={styles.sideContentDetail}>
+              {data.file.map((ext, index) => (
+                <div key={index}>{ext}</div>
+              ))}
+            </div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>PROGRAM</div>
-            <div className={styles.sideContentDetail}>{data.extension}</div>
+            <div className={styles.sideContentDetail__program}>
+              {data.extension.map((ext, index) => (
+                <div key={index} className={styles.extensionItem}>
+                  <img
+                    src={`/images/explore/${ext}.png`}
+                    alt={`${ext} icon`}
+                    className={styles.extensionIcon}
+                  />
+                  <span className={styles.extensionLabel}>{ext}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <div className={styles.sideItem}>
             <div className={styles.sideTitle}>ETC</div>
-            <div className={styles.sideContentDetail}>{data.isAnimated}</div>
+            <div className={styles.sideContentDetail}>
+              {data.isAnimated === 1 ? "Animated" : ""}
+            </div>
           </div>
         </div>
       </div>
