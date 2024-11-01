@@ -142,7 +142,7 @@
   - `React` : 사용자 인터페이스 구축을 위한 JavaScript 라이브러리
   - `Redux Toolkit` : 상태 관리 라이브러리
   - `Three.js` : 3D 그래픽 렌더링 라이브러리
-  - `Framer Motion` : 애니메이션 라이브러리
+  - `Framer Motion` : 끝내주는 애니메이션 라이브러리
   - `rc-slider` : 슬라이더 UI 컴포넌트 라이브러리
   - `next-auth` : 인증 및 권한 관리를 위한 라이브러리
   - `Prisma` : 데이터베이스와의 상호작용을 돕는 ORM (Object-Relational Mapping) 도구
@@ -157,6 +157,8 @@
 ```
 - Node.js : v20.18.0
 - npm : v10.8.2
+- Visual Studio Code: v1.95.0
+
 ```
 
 ## 개발 문서
