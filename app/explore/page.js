@@ -275,7 +275,7 @@ function ExploreContent() {
             onMouseLeave={handleMouseLeave}
           >
             <img
-              src={`/api/minio/${item.preview[0]}`}
+              src={`/api/image/${item.preview[0]}`}
               className={styles.itemImage}
             />
             <div className={styles.itemInfo}>

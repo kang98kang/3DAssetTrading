@@ -18,7 +18,7 @@ export default function useFetchDetailData({ id }) {
 
         if (responseData.modeling) {
           responseData.modeling = responseData.modeling.map(
-            (filename) => `/api/minio/${filename.split("/").pop()}`
+            (filename) => `/api/image/${filename.split("/").pop()}`
           );
         }
 

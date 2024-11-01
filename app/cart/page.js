@@ -35,7 +35,7 @@ export default function CartPage() {
             cartItems.map((item) => (
               <div key={item.id} className={styles.cartItem}>
                 <img
-                  src={`/api/minio/${item.preview[0]}`}
+                  src={`/api/image/${item.preview[0]}`}
                   alt={item.name}
                   className={styles.image}
                 />

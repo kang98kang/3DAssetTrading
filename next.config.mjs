@@ -11,7 +11,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/minio/:path*",
+        source: "/api/image/:path*",
         destination: `http://${process.env.DB_HOST}:9000/test/:path*`,
       },
     ];
