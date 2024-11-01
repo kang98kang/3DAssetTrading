@@ -3,8 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 83.7vh;
-  min-height: calc(83.7vh - 80px);
   padding: 0 5%;
   background-color: var(--background-color-primary);
 }

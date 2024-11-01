@@ -35,8 +35,14 @@ export async function POST(request) {
     }
 
     if (category) {
-      sql += ` AND a.category LIKE ?`;
-      params.push(`%${category}%`);
+      if (category === "vehicle") {
+        sql += ` AND a.category IN ("compact", "mid-size", "large")`;
+      } else if (category === "clothing") {
+        sql += ` AND a.category IN ("top", "bottom")`;
+      } else {
+        sql += ` AND a.category LIKE ?`;
+        params.push(category);
+      }
     }
 
     if (program && program.length > 0) {

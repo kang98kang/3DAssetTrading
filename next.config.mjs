@@ -8,9 +8,6 @@ const nextConfig = {
     NEXT_PUBLIC_TEXT_COLOR_PRIMARY: "white",
     NEXT_PUBLIC_TEXT_COLOR_SECONDARY: "black",
   },
-  images: {
-    domains: ["minio.daraerang.com"],
-  },
   async rewrites() {
     return [
       {
