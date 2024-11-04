@@ -31,7 +31,8 @@
       "삭제",
       "장바구니가 비어있습니다.",
       "총 금액",
-      "결제하기"
+      "결제하기",
+      "결제 방법"
     ],
     "Footer": [
       "주식회사 몬스테라텍",
@@ -64,7 +65,8 @@
       "Remove",
       "Your shopping cart is empty.",
       "Total amount",
-      "Checkout"
+      "Checkout",
+      "How to pay"
     ],
     "Login": [
       "Login",

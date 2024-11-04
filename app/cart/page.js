@@ -42,7 +42,7 @@ export default function CartPage() {
                 <div className={styles.itemDetails}>
                   <h2 className={styles.itemName}>{item.name}</h2>
                   <p className={styles.itemPrice}>
-                    {translations[language]?.Detail[3]}: {item.price}
+                    {translations[language]?.Detail[3]}: {item.price}$
                   </p>
                   <div className={styles.quantityControl}>
                     <button
@@ -81,7 +81,7 @@ export default function CartPage() {
           <div className={styles.total}>
             <div className={styles.totalDetail}>
               <span>{translations[language]?.Detail[6]}:</span>
-              <span className={styles.totalAmount}>{totalAmount}</span>
+              <span className={styles.totalAmount}>{totalAmount}$</span>
             </div>
             <div className={styles.buttonContainer}>
               <Button

@@ -10,10 +10,13 @@ import Button from "@/components/common/Button";
 import Slider from "@/components/common/Slider";
 import styles from "../detailpage.module.css";
 
+import PayModal from "../../../components/widget/payment/PayModal";
+
 export default function Detail() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const { language, translations } = useLanguageData();
+  const [isPayModalOpen, setPayModalOpen] = useState(false);
+
   const { id } = useParams();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -26,20 +29,30 @@ export default function Detail() {
     router.push("/cart");
   };
 
+  const openPayModal = () => {
+    setPayModalOpen(true);
+  };
+
+  const closePayModal = () => {
+    setPayModalOpen(false);
+  };
+
+  const handlePaymentSuccess = (details) => {
+    console.log("Payment successful:", details);
+    closePayModal();
+  };
+
   return (
     <div className={styles.test}>
       <div className={styles.minheader}>
         <div className={styles.productContainer}>
           <div className={styles.leftSection}>
-            <span className={styles.filename}>
-              {translations[language]?.Detail[2]}: {data.name}
-            </span>
+            <span className={styles.filename}>{data.name}</span>
           </div>
           <div className={styles.rightSection}>
-            <span className={styles.price}>
-              {translations[language]?.Detail[3]}: {data.price}
-            </span>
+            <span className={styles.price}>{data.price}$</span>
             <Button
+              onClick={openPayModal}
               backgroundColor={
                 process.env.NEXT_PUBLIC_BACKGROUND_COLOR_TERTIARY
               }
@@ -107,6 +120,13 @@ export default function Detail() {
           </div>
         </div>
       </div>
+      {isPayModalOpen && (
+        <PayModal
+          onClose={closePayModal}
+          amount={data.price}
+          onSuccess={handlePaymentSuccess}
+        />
+      )}
     </div>
   );
 }
