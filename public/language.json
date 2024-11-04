@@ -22,7 +22,10 @@
       "서비스 탈퇴를 진행하시겠습니까? 이 작업은 돌이킬 수 없습니다.",
       "서비스 탈퇴가 완료되었습니다.",
       "탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요.",
-      "로그인이 필요합니다!"
+      "로그인이 필요합니다!",
+      "구글로 로그인",
+      "구글로 회원가입",
+      "동일한 아이디를 사용하는 다른 SNS 계정이 이미 존재합니다!"
     ],
     "Detail": [
       "구매하기",
@@ -80,7 +83,10 @@
       "Are you sure you want to proceed with withdrawing from the service? This action is irreversible.",
       "Your withdrawal is complete.",
       "The withdrawal failed. If the error is repeated, please contact us.",
-      "Login is required!"
+      "Login is required!",
+      "Login with Google",
+      "Register with Google",
+      "Another social media account with the same email already exists!"
     ],
     "Footer": [
       "Monsteratec Co. Ltd.",

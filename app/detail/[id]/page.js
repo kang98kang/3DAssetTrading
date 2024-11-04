@@ -22,7 +22,7 @@ export default function Detail() {
     closePayModal,
     closeLoginModal,
     handleCheckout,
-  } = useCheckout(); // 커스텀 훅 사용
+  } = useCheckout();
 
   const { id } = useParams();
   const router = useRouter();
@@ -83,7 +83,7 @@ export default function Detail() {
 
       <div className={styles.contentContainer}>
         <div className={styles.mainContent}>
-          <div className={styles.mainTitle}>Subscription</div>
+          <div className={styles.mainTitle}>Description</div>
           <p className={styles.mainDetail}>{data.description}</p>
         </div>
         <div className={styles.sideContent}>

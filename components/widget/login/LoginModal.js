@@ -27,6 +27,13 @@ export default function LoginModal({ onClose }) {
           label={translations[language]?.Login[3]}
           iconSrc="/icons/discord.png"
         />
+        <Button
+          onClick={() => handleSignIn("google")}
+          width="360px"
+          height="42px"
+          label={translations[language]?.Login[11]}
+          iconSrc="/icons/google.png"
+        />
         <div className={styles.registerPrompt}>
           <div
             onClick={() => {
