@@ -1,21 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useParams } from "next/navigation";
 import { useDispatch } from "react-redux";
+import { useRouter, useParams } from "next/navigation";
+import { addToCart } from "../../store/cartSlice";
 import useFetchDetailData from "../../../components/hook/useFetchDetailData";
 import { useLanguageData } from "../../../components/hook/useLanguageData";
-import { addToCart } from "../../store/cartSlice";
+import useCheckout from "../../../components/hook/useCheckout";
 import Button from "@/components/common/Button";
+import PayModal from "../../../components/widget/payment/PayModal";
+import LoginModal from "../../../components/widget/login/LoginModal";
 import Slider from "@/components/common/Slider";
 import styles from "../detailpage.module.css";
-
-import PayModal from "../../../components/widget/payment/PayModal";
 
 export default function Detail() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { language, translations } = useLanguageData();
-  const [isPayModalOpen, setPayModalOpen] = useState(false);
+  const {
+    isPayModalOpen,
+    isLoginModalOpen,
+    closePayModal,
+    closeLoginModal,
+    handleCheckout,
+  } = useCheckout(); // 커스텀 훅 사용
 
   const { id } = useParams();
   const router = useRouter();
@@ -29,16 +36,7 @@ export default function Detail() {
     router.push("/cart");
   };
 
-  const openPayModal = () => {
-    setPayModalOpen(true);
-  };
-
-  const closePayModal = () => {
-    setPayModalOpen(false);
-  };
-
   const handlePaymentSuccess = (details) => {
-    console.log("Payment successful:", details);
     closePayModal();
   };
 
@@ -52,7 +50,7 @@ export default function Detail() {
           <div className={styles.rightSection}>
             <span className={styles.price}>{data.price}$</span>
             <Button
-              onClick={openPayModal}
+              onClick={handleCheckout}
               backgroundColor={
                 process.env.NEXT_PUBLIC_BACKGROUND_COLOR_TERTIARY
               }
@@ -127,6 +125,7 @@ export default function Detail() {
           onSuccess={handlePaymentSuccess}
         />
       )}
+      {isLoginModalOpen && <LoginModal onClose={closeLoginModal} />}
     </div>
   );
 }

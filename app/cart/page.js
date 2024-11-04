@@ -3,13 +3,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../store/cartSlice";
 import { useLanguageData } from "../../components/hook/useLanguageData";
+import useCheckout from "../../components/hook/useCheckout";
 import Button from "@/components/common/Button";
+import PayModal from "../../components/widget/payment/PayModal";
+import LoginModal from "../../components/widget/login/LoginModal";
 import styles from "./cartpage.module.css";
 
 export default function CartPage() {
   const { language, translations } = useLanguageData();
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const {
+    isPayModalOpen,
+    isLoginModalOpen,
+    closePayModal,
+    closeLoginModal,
+    handleCheckout,
+  } = useCheckout();
 
   const handleRemove = (id) => {
     dispatch(removeFromCart(id));
@@ -85,6 +95,7 @@ export default function CartPage() {
             </div>
             <div className={styles.buttonContainer}>
               <Button
+                onClick={handleCheckout}
                 width="60%"
                 height="50px"
                 label={translations[language]?.Detail[7]}
@@ -94,6 +105,10 @@ export default function CartPage() {
           </div>
         )}
       </div>
+      {isPayModalOpen && (
+        <PayModal onClose={closePayModal} amount={totalAmount} />
+      )}
+      {isLoginModalOpen && <LoginModal onClose={closeLoginModal} />}
     </div>
   );
 }

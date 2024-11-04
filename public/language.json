@@ -21,7 +21,8 @@
       "프로필",
       "서비스 탈퇴를 진행하시겠습니까? 이 작업은 돌이킬 수 없습니다.",
       "서비스 탈퇴가 완료되었습니다.",
-      "탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요."
+      "탈퇴에 실패했습니다. 오류가 반복되면 문의해 주세요.",
+      "로그인이 필요합니다!"
     ],
     "Detail": [
       "구매하기",
@@ -78,7 +79,8 @@
       "Profile",
       "Are you sure you want to proceed with withdrawing from the service? This action is irreversible.",
       "Your withdrawal is complete.",
-      "The withdrawal failed. If the error is repeated, please contact us."
+      "The withdrawal failed. If the error is repeated, please contact us.",
+      "Login is required!"
     ],
     "Footer": [
       "Monsteratec Co. Ltd.",
