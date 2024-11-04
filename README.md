@@ -158,7 +158,6 @@
 - Node.js : v20.18.0
 - npm : v10.8.2
 - Visual Studio Code: v1.95.0
-
 ```
 
 ## 개발 문서
