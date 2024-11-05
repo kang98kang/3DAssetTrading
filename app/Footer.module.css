@@ -1,6 +1,11 @@
 .footerContainer {
   height: 150px;
   background-color: var(--background-color-secondary);
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0),
+    rgba(1, 1, 1, 0.8)
+  );
   color: var(--text-color-primary);
   padding: 20px;
   display: flex;

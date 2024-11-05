@@ -9,7 +9,7 @@ import styles from "./mainpage.module.css";
 import { useAuth } from "../components/hook/useAuth.js";
 import { useSelector } from "react-redux";
 
-const EyeModel = dynamic(() => import("../components/widget/Eye.js"), {
+const EarthModel = dynamic(() => import("../components/widget/Earth.js"), {
   ssr: false,
 });
 
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.modelSection}>
-          <EyeModel />
+          <EarthModel />
         </div>
       </div>
     </motion.div>

@@ -5,6 +5,9 @@
   align-items: center;
   padding: 0 5%;
   background-color: var(--background-color-primary);
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .section {
@@ -31,6 +34,11 @@
   gap: 3rem;
   position: relative;
   align-items: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0),
+    rgba(1, 1, 1, 0.8)
+  );
 }
 
 .title {

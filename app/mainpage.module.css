@@ -1,4 +1,7 @@
 .mainContainer {
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -6,9 +9,13 @@
   height: 100vh;
   min-height: calc(100vh - 80px);
   padding: 0 5%;
-  background-color: var(--background-color-primary);
+  /* background-color: var(--background-color-primary); */
 }
 
+.mainContainer > * {
+  position: relative;
+  z-index: 2;
+}
 .textSection {
   flex: 1;
   color: var(--text-color-primary);
