@@ -1,6 +1,6 @@
 import { useLanguageData } from "../../hook/useLanguageData";
 import { PayPalButton } from "./Paypal";
-import styles from "../login/LoginModal.module.css";
+import styles from "./PayModal.module.css";
 
 export default function PayModal({ onClose, amount, onSuccess }) {
   const { language, translations } = useLanguageData();
