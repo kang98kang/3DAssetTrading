@@ -1,5 +1,6 @@
 import ClientProvider from "../components/ClientProvider";
 import localFont from "next/font/local";
+import { Gowun_Dodum } from "@next/font/google";
 import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -15,6 +16,11 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const gowunDodum = Gowun_Dodum({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata = {
   title: "3D Assets",
   description: "3D Assets Trading Platform",
@@ -24,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${gowunDodum.className} antialiased`}
         style={{
           "--background-color-primary":
             process.env.NEXT_PUBLIC_BACKGROUND_COLOR_PRIMARY,
