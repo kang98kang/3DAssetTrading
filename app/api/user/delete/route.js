@@ -1,5 +1,6 @@
 import { prisma } from "@/prisma/prisma";
 import { auth } from "@/auth";
+import fetch from "node-fetch";
 
 export async function DELETE(req) {
   const session = await auth();
@@ -12,6 +13,24 @@ export async function DELETE(req) {
 
   try {
     const userId = session.user.id;
+
+    const googleAccount = await prisma.account.findFirst({
+      where: { userId, provider: "google" },
+    });
+
+    if (googleAccount) {
+      const googleAccessToken = googleAccount.access_token;
+
+      await fetch(
+        `https://accounts.google.com/o/oauth2/revoke?token=${googleAccessToken}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+    }
 
     await prisma.session.deleteMany({ where: { userId } });
     await prisma.account.deleteMany({ where: { userId } });

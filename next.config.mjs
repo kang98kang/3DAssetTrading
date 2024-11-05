@@ -14,6 +14,17 @@ const nextConfig = {
         source: "/api/image/:path*",
         destination: `http://${process.env.DB_HOST}:9000/test/:path*`,
       },
+      {
+        source: "/api/auth/signin",
+        has: [
+          {
+            type: "query",
+            key: "error",
+            value: "OAuthAccountNotLinked",
+          },
+        ],
+        destination: "/error",
+      },
     ];
   },
 };

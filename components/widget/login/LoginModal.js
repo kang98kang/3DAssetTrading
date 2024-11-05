@@ -8,7 +8,9 @@ export default function LoginModal({ onClose }) {
   const router = useRouter();
 
   const handleSignIn = async (provider) => {
-    await signIn(provider, null, { prompt: "none" });
+    if (provider === "discord") {
+      await signIn(provider, null, { prompt: "none" });
+    } else await signIn(provider);
   };
 
   const { language, translations } = useLanguageData();
