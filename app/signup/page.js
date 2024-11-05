@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useLanguageData } from "../../components/hook/useLanguageData";
 import Button from "@/components/common/Button";
-import styles from "./registerpage.module.css";
+import styles from "./signuppage.module.css";
 
 export default function Login() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
-  const handleRegister = async (provider) => {
+  const handleSignup = async (provider) => {
     await signIn(provider);
   };
 
@@ -25,14 +25,14 @@ export default function Login() {
         <div className={styles.wrapper}>
           <h1 className={styles.title}>{translations[language]?.Login[2]}</h1>
           <Button
-            onClick={() => handleRegister("discord")}
+            onClick={() => handleSignup("discord")}
             width="360px"
             height="42px"
             label={translations[language]?.Login[4]}
             iconSrc="/icons/discord.png"
           />
           <Button
-            onClick={() => handleRegister("google")}
+            onClick={() => handleSignup("google")}
             width="360px"
             height="42px"
             label={translations[language]?.Login[12]}

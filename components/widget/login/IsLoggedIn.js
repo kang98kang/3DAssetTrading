@@ -67,7 +67,7 @@ export default function IsLoggedIn() {
           <Button
             onClick={() => {
               setLoginModalOpen(false);
-              router.push("/register");
+              router.push("/signup");
             }}
             width="75px"
             height="34px"

@@ -63,6 +63,8 @@
 ┃ ┃ ┣ [id]
 ┃ ┃ ┃ ┗ page.js
 ┃ ┃ ┗ detailpage.module.css
+┃ ┣ error
+┃ ┃ ┗ page.js
 ┃ ┣ explore
 ┃ ┃ ┣ explorepage.module.css
 ┃ ┃ ┗ page.js
@@ -72,8 +74,8 @@
 ┃ ┣ profile
 ┃ ┃ ┣ profilepage.module.css
 ┃ ┃ ┗ page.js
-┃ ┣ register
-┃ ┃ ┣ registerpage.module.css
+┃ ┣ signup
+┃ ┃ ┣ signuppage.module.css
 ┃ ┃ ┗ page.js
 ┃ ┣ store
 ┃ ┃ ┣ index.js
@@ -120,6 +122,10 @@
 ┃ ┣ images
 ┃ ┗ language.json
 ┣ auth.js
+┣ docs
+┃ ┣ architecture.png
+┃ ┣ erd.png
+┃ ┗ wireframe.pdf
 ┣ .env
 ┣ .eslintrc.json
 ┣ .gitattributes

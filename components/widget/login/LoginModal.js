@@ -36,11 +36,11 @@ export default function LoginModal({ onClose }) {
           label={translations[language]?.Login[11]}
           iconSrc="/icons/google.png"
         />
-        <div className={styles.registerPrompt}>
+        <div className={styles.signupPrompt}>
           <div
             onClick={() => {
               onClose();
-              router.push("/register");
+              router.push("/signup");
             }}
           >
             {translations[language]?.Login[2]}

@@ -75,9 +75,9 @@
     "Login": [
       "Login",
       "Logout",
-      "Register",
+      "Signup",
       "Login with Discord",
-      "Register with Discord",
+      "Signup with Discord",
       "Withdrawal",
       "Profile",
       "Are you sure you want to proceed with withdrawing from the service? This action is irreversible.",
@@ -85,7 +85,7 @@
       "The withdrawal failed. If the error is repeated, please contact us.",
       "Login is required!",
       "Login with Google",
-      "Register with Google",
+      "Signup with Google",
       "Another social media account with the same email already exists!"
     ],
     "Footer": [
