@@ -166,7 +166,7 @@
   left: 0;
   top: 100%;
   width: 300%;
-  background-color: #444;
+  background-color: rgba(0, 0, 0, 0.8);
   list-style: none;
   padding: 10px;
   margin: 0;
@@ -186,7 +186,7 @@
 }
 
 .dropdown li:hover {
-  background-color: #555;
+  background-color: var(--background-color-secondary);
   border-radius: 8px;
 }
 
@@ -200,8 +200,8 @@
 .submenu {
   position: absolute;
   top: -10px;
-  left: 100%;
-  background-color: #444;
+  left: 103.5%;
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 10px;
   z-index: 1;
   min-width: 50%;
@@ -215,6 +215,6 @@
 }
 
 .submenu li:hover {
-  background-color: #555;
+  background-color: var(--background-color-secondary);
   border-radius: 8px;
 }
