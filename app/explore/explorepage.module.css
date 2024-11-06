@@ -1,3 +1,10 @@
+.body {
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .dropdown {
   display: none;
   position: absolute;
@@ -31,11 +38,6 @@
   color: var(--text-color-primary);
   font-size: 20px;
   height: auto;
-  background-color: var(--background-color-primary);
-}
-
-.divisionline {
-  border-top: 2px solid whitesmoke;
 }
 
 .flexContainer {
@@ -45,15 +47,20 @@
 }
 
 .nav {
-  top: 0px;
+  margin-top: 100px;
+  margin-left: 2%;
+  position: sticky;
+  top: 10px;
   height: 85px;
-  width: 100%;
+  width: 95%;
   box-sizing: border-box;
+  border-radius: 15px;
   background-color: var(--background-color-tertiary);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 
 .inner {
@@ -175,8 +182,10 @@ input:checked + .slider:before {
 .gridWrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 0px 70px;
+  margin-left: 70px;
+  margin-right: 70px;
   grid-gap: 30px 70px;
+  margin-bottom: 100px;
 }
 
 .gridItem:nth-child(n) {
@@ -188,11 +197,13 @@ input:checked + .slider:before {
   color: rgba(255, 255, 255, 0.4);
   border-radius: 0.46vh;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 .gridItem:nth-child(n):hover {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  transform: scale(1.05);
 }
 
 .gridItem:hover .hoverContainer {

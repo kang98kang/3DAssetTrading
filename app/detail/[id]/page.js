@@ -41,7 +41,7 @@ export default function Detail() {
   };
 
   return (
-    <div className={styles.test}>
+    <div className={styles.wrapper}>
       <div className={styles.minheader}>
         <div className={styles.productContainer}>
           <div className={styles.leftSection}>

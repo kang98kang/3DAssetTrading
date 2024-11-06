@@ -142,7 +142,6 @@ function ExploreContent() {
 
   return (
     <div className={styles.paperback}>
-      <div className={styles.divisionline}></div>
       <div className={styles.nav}>
         <motion.div
           className={styles.flexContainer}

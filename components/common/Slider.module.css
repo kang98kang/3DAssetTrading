@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--background-color-primary);
+  background-color: rgba(0, 0, 0, 0);
   position: relative;
 }
 
@@ -80,14 +80,16 @@
 
 .thumbnailContainer {
   position: absolute;
+  margin-left: 2%;
   min-height: 40px;
   max-height: 5.5vh;
   bottom: 8vh;
   left: 0;
-  width: 100%;
+  width: 95%;
+  border-radius: 15px;
   display: flex;
   justify-content: center;
-  background-color: var(--background-color-primary);
+  background-color: rgba(0, 0, 0, 0.4);
   flex-wrap: wrap;
   align-items: center;
 }

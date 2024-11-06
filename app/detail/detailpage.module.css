@@ -3,18 +3,27 @@
   height: 100%;
 }
 
+.wrapper {
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 .minheader {
+  top: 2%;
   z-index: 3;
   display: flex;
   height: 80px;
-  width: 100%;
-  margin-top: 80px;
+  width: 95%;
+  margin-top: 5%;
+  margin-left: 2%;
+  border-radius: 15px;
   box-sizing: border-box;
   background-color: var(--background-color-tertiary);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: block;
+  position: sticky;
   padding: 0 1.04vw;
 }
 
@@ -67,7 +76,7 @@
   justify-content: space-between;
   padding: 1.85vh 2.6vw;
   padding-bottom: 3.7vh;
-  background-color: var(--background-color-secondary);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .mainTitle {
