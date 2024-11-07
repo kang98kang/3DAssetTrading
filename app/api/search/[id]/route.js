@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import mysql from "mysql2/promise";
 
+export const runtime = "edge";
+
 async function connect(sql, values = []) {
   const conn = await mysql.createConnection({
     user: `${process.env.DB_USERNAME}`,
