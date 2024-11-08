@@ -13,6 +13,10 @@ const EarthModel = dynamic(() => import("../components/widget/Earth.js"), {
   ssr: false,
 });
 
+const RocketModel = dynamic(() => import("../components/widget/Rocket.js"), {
+  ssr: false,
+});
+
 export default function Home() {
   const router = useRouter();
   const handleRoute = (route) => {
@@ -33,6 +37,7 @@ export default function Home() {
       transition={{ duration: 0.5 }}
     >
       <div className={styles.mainContainer}>
+        {/* 지구 모델과 텍스트 영역 */}
         <div className={styles.textSection}>
           {user ? (
             <>
@@ -60,6 +65,20 @@ export default function Home() {
           <EarthModel />
         </div>
       </div>
+
+      <motion.div
+        className={styles.rocketContainer}
+        initial={{ x: "-20vw", y: "50vh" }}
+        animate={{ x: "100vw" }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 30,
+          ease: "linear",
+        }}
+      >
+        <RocketModel direction="right" />
+      </motion.div>
     </motion.div>
   );
 }

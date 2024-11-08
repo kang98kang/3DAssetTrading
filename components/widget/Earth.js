@@ -9,7 +9,7 @@ const Earth = () => {
 
   useFrame(() => {
     if (ref.current) {
-      ref.current.rotation.y += 0.002;
+      ref.current.rotation.y += 0.001;
     }
   });
 
