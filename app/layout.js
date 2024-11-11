@@ -1,22 +1,10 @@
 import ClientProvider from "../components/ClientProvider";
-import localFont from "next/font/local";
-import { Gowun_Dodum } from "@next/font/google";
+import { Nanum_Gothic } from "@next/font/google";
 import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-const gowunDodum = Gowun_Dodum({
+const nanumGothic = Nanum_Gothic({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -30,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${gowunDodum.className} antialiased`}
+        className={`${nanumGothic.className} antialiased`}
         style={{
           "--background-color-primary":
             process.env.NEXT_PUBLIC_BACKGROUND_COLOR_PRIMARY,

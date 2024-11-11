@@ -50,6 +50,7 @@ export default function Home() {
             <h1>{translations[language]?.Main[0]}</h1>
           )}
           <p>{translations[language]?.Main[1]}</p>
+          <p>{translations[language]?.Main[4]}</p>
           <div className={styles.buttonGroup}>
             <Button
               width="auto"

@@ -44,9 +44,10 @@
     ],
     "Main": [
       "환영합니다!",
-      "3D 에셋을 관리하세요. 3D 및 AR 경험을 배포하고 다른 사람과 공동 작업하세요. 당신의 작품을 선보이고 3D 모델을 구매 및 판매할 기회입니다.",
+      "3D 에셋을 관리하세요. 3D 및 AR 경험을 배포하고 다른 사람과 공동 작업하세요.",
       "문의하기",
-      "메인페이지로 돌아가기"
+      "메인페이지로 돌아가기",
+      "당신의 작품을 선보이고 3D 모델을 구매 및 판매할 기회입니다."
     ]
   },
   "en": {
@@ -94,9 +95,10 @@
     ],
     "Main": [
       "Welcome!",
-      "Manage your 3D assets. Distribute 3D & AR experiences. Collaborate with others. Showcase your work. Buy & sell 3D models.",
+      "Manage your 3D assets. Distribute 3D & AR experiences. Collaborate with others.",
       "Contact Us",
-      "Go back to Mainpage"
+      "Go back to Mainpage",
+      "Showcase your work. Buy & sell 3D models."
     ]
   }
 }

@@ -18,21 +18,22 @@
 }
 .textSection {
   margin-left: 15%;
-  width: 40rem !important;
+  width: 42rem;
   color: var(--text-color-primary);
 }
 
 .textSection h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .textSection p {
-  font-size: 1.2em;
-  margin-bottom: 40px;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 .buttonGroup {
+  margin-top: 2rem;
   display: flex;
   gap: 20px;
 }
