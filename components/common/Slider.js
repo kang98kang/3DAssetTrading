@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Slider.module.css";
 import Image from "next/image";
 
+const MotionImage = motion(Image);
+
 const thumbnailPerPage = 20;
 
 const Slider = ({ images, currentIndex, setCurrentIndex }) => {
@@ -76,107 +78,108 @@ const Slider = ({ images, currentIndex, setCurrentIndex }) => {
   };
 
   return (
-    <div>
-      <div className={styles.sliderContainer}>
-        <div className={styles.slider}>
-          <AnimatePresence initial={false} custom={direction}>
-            {images.length > 0 && (
-              <motion.img
-                custom={direction}
-                variants={boxVariants}
-                key={currentIndex}
-                src={images[currentIndex]}
-                alt={images[currentIndex]}
-                initial="entry"
-                animate="center"
-                exit="exit"
-                className={styles.image}
-              />
-            )}
-          </AnimatePresence>
-        </div>
+    <div className={styles.sliderContainer}>
+      <div className={styles.slider}>
+        <AnimatePresence initial={false} custom={direction}>
+          {images.length > 0 && (
+            <MotionImage
+              custom={direction}
+              variants={boxVariants}
+              key={currentIndex}
+              src={images[currentIndex]}
+              alt={images[currentIndex]}
+              initial="entry"
+              animate="center"
+              exit="exit"
+              className={styles.image}
+              width={800}
+              height={600}
+              objectFit="cover"
+            />
+          )}
+        </AnimatePresence>
+      </div>
 
-        {currentIndex !== 0 && (
-          <button onClick={prevSlide} className={styles.prevButton}>
-            <Image
-              src="/icons/Vector.svg"
-              alt="Previous"
-              className={styles.prevButtonImg}
-              width={25}
-              height={25}
-            />
-          </button>
-        )}
-        {currentIndex !== images.length - 1 && (
-          <button onClick={nextSlide} className={styles.nextButton}>
-            <Image
-              src="/icons/Vector.svg"
-              alt="Next"
-              className={styles.nextButtonImg}
-              width={25}
-              height={25}
-            />
-          </button>
-        )}
-        <div className={styles.thumbnailContainer}>
-          <div className={styles.thumbnailImgContainer}>
-            {currentThumbnails.map((image, index) => (
-              <div
-                key={index}
-                className={`${styles.thumbnail} ${
-                  currentIndex === index + currentPage * thumbnailPerPage
-                    ? styles.activeThumbnail
-                    : ""
-                }`}
-                onClick={() =>
-                  handleThumbnailClick(index + currentPage * thumbnailPerPage)
-                }
+      {currentIndex !== 0 && (
+        <button onClick={prevSlide} className={styles.prevButton}>
+          <Image
+            src="/icons/Vector.svg"
+            alt="Previous"
+            className={styles.prevButtonImg}
+            width={25}
+            height={25}
+          />
+        </button>
+      )}
+      {currentIndex !== images.length - 1 && (
+        <button onClick={nextSlide} className={styles.nextButton}>
+          <Image
+            src="/icons/Vector.svg"
+            alt="Next"
+            className={styles.nextButtonImg}
+            width={25}
+            height={25}
+          />
+        </button>
+      )}
+      <div className={styles.thumbnailContainer}>
+        <div className={styles.thumbnailImgContainer}>
+          {currentThumbnails.map((image, index) => (
+            <div
+              key={index}
+              className={`${styles.thumbnail} ${
+                currentIndex === index + currentPage * thumbnailPerPage
+                  ? styles.activeThumbnail
+                  : ""
+              }`}
+              onClick={() =>
+                handleThumbnailClick(index + currentPage * thumbnailPerPage)
+              }
+            >
+              {typeof image === "string" &&
+                (image.startsWith("http") || image.startsWith("/")) && (
+                  <Image
+                    src={image}
+                    alt="Thumbnail"
+                    className={styles.thumbnailImage}
+                    width={80}
+                    height={80}
+                  />
+                )}
+            </div>
+          ))}
+
+          {images.length > 19 && (
+            <>
+              <button
+                className={styles.prevPaginationButton}
+                onClick={handlePrevThumbnail}
+                disabled={currentPage === 0}
               >
-                {typeof image === "string" &&
-                  (image.startsWith("http") || image.startsWith("/")) && (
-                    <Image
-                      src={image}
-                      alt="Thumbnail"
-                      className={styles.thumbnailImage}
-                      width={15}
-                      height={15}
-                    />
-                  )}
-              </div>
-            ))}
+                <Image
+                  src="/icons/Vector.svg"
+                  alt="Previous"
+                  className={styles.prevButtonImg}
+                  width={15}
+                  height={15}
+                />
+              </button>
 
-            {images.length > 19 && (
-              <>
-                <button
-                  className={styles.prevPaginationButton}
-                  onClick={handlePrevThumbnail}
-                  disabled={currentPage === 0}
-                >
-                  <Image
-                    src="/icons/Vector.svg"
-                    alt="Previous"
-                    className={styles.prevButtonImg}
-                    width={15}
-                    height={15}
-                  />
-                </button>
-
-                <button
-                  className={styles.nextPaginationButton}
-                  onClick={handleNextThumbnail}
-                  disabled={currentPage >= totalPages - 1}
-                >
-                  <Image
-                    src="/icons/Vector.svg"
-                    alt="Next"
-                    className={styles.nextButtonImg}
-                    width={15}
-                    height={15}
-                  />
-                </button>
-              </>
-            )}
-          </div>
+              <button
+                className={styles.nextPaginationButton}
+                onClick={handleNextThumbnail}
+                disabled={currentPage >= totalPages - 1}
+              >
+                <Image
+                  src="/icons/Vector.svg"
+                  alt="Next"
+                  className={styles.nextButtonImg}
+                  width={15}
+                  height={15}
+                />
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

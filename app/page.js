@@ -8,6 +8,7 @@ import Button from "../components/common/Button";
 import styles from "./mainpage.module.css";
 import { useAuth } from "../components/hook/useAuth.js";
 import { useSelector } from "react-redux";
+import { Suspense } from "react";
 
 const EarthModel = dynamic(() => import("../components/widget/Earth.js"), {
   ssr: false,
@@ -37,7 +38,6 @@ export default function Home() {
       transition={{ duration: 0.5 }}
     >
       <div className={styles.mainContainer}>
-        {/* 지구 모델과 텍스트 영역 */}
         <div className={styles.textSection}>
           {user ? (
             <>
@@ -62,7 +62,9 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.modelSection}>
-          <EarthModel />
+          <Suspense fallback={<div style={{ color: "white" }}>Loading...</div>}>
+            <EarthModel />
+          </Suspense>
         </div>
       </div>
 

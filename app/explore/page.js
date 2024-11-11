@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Slider from "rc-slider";
@@ -273,9 +274,11 @@ function ExploreContent() {
             onMouseEnter={() => handleMouseEnter(item.id)}
             onMouseLeave={handleMouseLeave}
           >
-            <img
+            <Image
               src={`/api/image/${item.preview[0]}`}
               className={styles.itemImage}
+              width={500}
+              height={400}
             />
             <div className={styles.itemInfo}>
               <span className={styles.itemName}>{item.name}</span>

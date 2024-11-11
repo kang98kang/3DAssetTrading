@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls } from "@react-three/drei";
+import { useGLTF, OrbitControls, Preload } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
@@ -26,6 +26,7 @@ const RocketModel = ({ direction = "right" }) => (
     style={{ width: "200px", overflow: "hidden" }}
     camera={{ position: [0, 0, 10], fov: 70 }}
   >
+    <Preload all />
     <ambientLight intensity={1} />
     <directionalLight position={[5, 10, 5]} intensity={2} />
     <Rocket direction={direction} />

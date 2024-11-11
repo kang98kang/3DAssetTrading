@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF, Preload } from "@react-three/drei";
 import { useRef } from "react";
 
 const Earth = () => {
@@ -21,8 +21,9 @@ const EarthScene = () => {
     <Canvas>
       <ambientLight intensity={1} />
       <directionalLight position={[5, 10, 5]} intensity={2} />
-      <Earth />
       <OrbitControls enableZoom={false} />
+      <Preload all />
+      <Earth />
     </Canvas>
   );
 };
