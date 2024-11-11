@@ -19,8 +19,8 @@ const Earth = () => {
 const EarthScene = () => {
   return (
     <Canvas>
-      <ambientLight intensity={0.7} />
-      <directionalLight position={[5, 10, 5]} intensity={1} castShadow />
+      <ambientLight intensity={1} />
+      <directionalLight position={[5, 10, 5]} intensity={2} />
       <Earth />
       <OrbitControls enableZoom={false} />
     </Canvas>

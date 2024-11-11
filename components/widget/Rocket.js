@@ -24,14 +24,14 @@ const Rocket = ({ direction }) => {
 const RocketModel = ({ direction = "right" }) => (
   <Canvas
     style={{ width: "200px", overflow: "hidden" }}
-    came
-    ra={{ position: [0, 0, 10], fov: 70 }}
+    camera={{ position: [0, 0, 10], fov: 70 }}
   >
     <ambientLight intensity={1} />
-    <directionalLight position={[5, 10, 5]} intensity={1} />
+    <directionalLight position={[5, 10, 5]} intensity={2} />
     <Rocket direction={direction} />
     <OrbitControls
       enableZoom={false}
+      enableRotate={false}
       minPolarAngle={Math.PI / 3}
       maxPolarAngle={Math.PI / 2}
     />
