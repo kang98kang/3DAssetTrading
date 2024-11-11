@@ -24,7 +24,8 @@ const Rocket = ({ direction }) => {
 const RocketModel = ({ direction = "right" }) => (
   <Canvas
     style={{ width: "200px", overflow: "hidden" }}
-    camera={{ position: [0, 0, 10], fov: 70 }}
+    came
+    ra={{ position: [0, 0, 10], fov: 70 }}
   >
     <ambientLight intensity={1} />
     <directionalLight position={[5, 10, 5]} intensity={1} />
